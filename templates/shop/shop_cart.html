@@ -21,7 +21,8 @@
     <!--Grid column-->
     <div class="col-lg-8">
       <div class="container row">
-        <h5 class="ml-3 mt-1">Koszyk (Produkty - <span>{{ shop_products_cart }}</span>)</h5>
+        <h5 class="ml-3 mt-1" style="color:{{ colors.eshop_font_container }};">
+          Koszyk (Produkty - <span>{{ shop_products_cart }}</span>)</h5>
         <form class="form-inline mr-n3 ml-auto mt-n1 mb-2" action='.' method='POST'> {% csrf_token %}
           <button type="submit" class="btn btn-danger" name="delete_all_in_cart">
             Wyczyść Koszyk
@@ -39,7 +40,7 @@
       {%  for id in shop_products_cart_list %}
       <!-- Card -->
       <div class="card wish-list mb-3">
-        <div class="card-body mb-n2">
+        <div class="card-body mb-n2" style="background-color:{{ colors.eshop_container_products_elemnts }};">
 
           <div class="row">
             <div class="col-5 col-md-4 mr-auto">
@@ -55,12 +56,12 @@
             </div>
             <div class="col-7 col-md-8 ml-auto">
               <div class="col">
-                <h6 class="my-3 mb-2">{{ id.product.title_product }}</h6>
+                <h6 class="my-3 mb-2" style="color:{{ colors.eshop_font_container }};">{{ id.product.title_product }}</h6>
               </div>
               <div class="col">
                 <ins>
                   <strong>
-                    <a href='{{ id.product.get_absolute_url }}'>
+                    <a href='{{ id.product.get_absolute_url }}' style="color:{{ colors.eshop_font_container }};">
                       Opis Produktu
                     </a>
                   </strong>
@@ -78,7 +79,7 @@
                     <form class="form-inline" action='{{ id.id }}/' method='POST'> {% csrf_token %}
                       <button type="submit" class="btn btn-secondary" name="plus"><i class="fas fa-plus"></i> </button>
                       <div class="col mt-2 text-center">
-                        <strong>{{ id.quantity }}</strong>
+                        <strong style="color:{{ colors.eshop_font_container }};">{{ id.quantity }}</strong>
                       </div>
                       <button type="submit" class="btn btn-secondary" name="minus"><i class="fas fa-minus"></i> </button>
                     </form>
@@ -86,7 +87,8 @@
                 </div>
               </div>
               <div class="col-12 col-md-6 mt-2 text-center">
-                <span><strong>{{ id.get_total_price|floatformat:2 }} PLN </strong></span>
+                <span><strong style="color:{{ colors.eshop_font_container }};">
+                  {{ id.get_total_price|floatformat:2 }} PLN </strong></span>
               </div>
             </div>
             <div class="col mt-2">
@@ -107,40 +109,44 @@
         </div>
       <hr class="mb-2">
      <div class="card mb-2">
-       <div class="card-body">
+       <div class="card-body" style="background-color:{{ colors.eshop_container_products_elemnts }};
+                                    color:{{ colors.eshop_font_container }};">
          <h5 class="mb-1 mt-n2">Przewidywany czas dostawy:</h5>
          <p class="mb-n2">Do 60 dni</p>
        </div>
      </div>
     </div>
-    <div class="col-lg-4 mt-5">
+    <div class="col-lg-4 mt-5" style="color:{{ colors.eshop_font_container }};">
       <div class="card mb-3">
-        <div class="card-body">
+        <div class="card-body" style="background-color:{{ colors.eshop_container_products_elemnts }};">
           <h5 class="mb-1">Formy Płatności</h5>
           <img class="mr-2" width="45px"
-            src="{% static 'img/payment/visa.svg' %}"
+            src="{% static 'img/visa.svg' %}"
             alt="Visa">
           <img class="mr-2" width="45px"
-            src="{% static 'img/payment/paypal.ico' %}"
+            src="{% static 'img/paypal.ico' %}"
             alt="PayPal acceptance mark">
         </div>
       </div>
       <!-- Card -->
-      <div class="card mb-3">
-        <div class="card-body">
+      <div class="card mb-3"  style="background-color:{{ colors.eshop_container_products_elemnts }};">
+        <div class="card-body" >
           <h5 class="mb-3">Razem do zapłaty (PLN)</h5>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"
+             style="background-color:{{ colors.eshop_container_products_elemnts }};">
               Do zapłaty
               <span>
                   {{ order.get_all_price|floatformat:2 }}
               </span>
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0"
+             style="background-color:{{ colors.eshop_container_products_elemnts }};">
               Wysyłka
               <span>0</span>
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3"
+             style="background-color:{{ colors.eshop_container_products_elemnts }};">
               <div>
                 <strong>Razem do zapłaty</strong>
                 <strong>
@@ -151,7 +157,9 @@
             </li>
           </ul>
           <form class="form-inline" action='.' method='POST'> {% csrf_token %}
-            <button type="submit" class="btn btn-primary btn-block waves-effect waves-light" name="pay">
+            <button type="submit" class="btn btn-{{ colors.eshop_buttons_cont }}
+                            btn-outline-{{ colors.eshop_buttons_font_cont }}
+                             btn-block waves-effect waves-light" name="pay">
               Idź do Płatności
             </button>
           </form>

@@ -16,7 +16,7 @@
             {% endif %}
         {% endfor %}
     {% endif %}
-  <div class="row text-center">
+  <div class="row text-center" style="background-color:{{ colors.eshop_container_products_elemnts }};">
     <div class="col-md-10 col-lg-6">
         <div class="ml-1 mt-3">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -59,30 +59,40 @@
         </div>
         <div class="">
             <p class="card-text">
-                <p class="text-muted">{{ object.price_product|floatformat:2 }} PLN netto</p>
+                <p class="" style="color:{{ colors.eshop_font_container }};">
+                    {{ object.price_product|floatformat:2 }} PLN netto
+                </p>
             </p>
         </div>
         <div class="my-3">
             <form class="form-inline " action='.' method='POST'> {% csrf_token %}
-                <button type="submit" class="btn btn-primary mx-auto" name="add_to_cart">Dodaj do Koszyka</button>
+                <button type="submit" class="btn btn-{{ colors.eshop_buttons_cont }}
+                            btn-outline-{{ colors.eshop_buttons_font_cont }} mx-auto" name="add_to_cart">
+                    Dodaj do Koszyka
+                </button>
             </form>
         </div>
         <div class="my-4">
             <a href="/contact">
-                <small class="text-muted">zapytaj o karte produktu..</small>
+                <small class="" style="color:{{ colors.eshop_font_container }};">
+                    zapytaj o karte produktu..
+                </small>
             </a>
         </div>
     </div>
     <div class="col-md-10 col-lg-6">
         <div class="card-header">
-            <h5 class="card-title">{{ object.title_product }}</h5>
-            <p class="card-text text-left">{{ object.description_product }}</p>
+            <h5 class="card-title" style="color:{{ colors.eshop_font_container }};">{{ object.title_product }}</h5>
+            <p class="card-text text-left" style="color:{{ colors.eshop_font_container }};">
+                {{ object.description_product }}
+            </p>
         </div>
         <div class="card-body">
-            <h6 class="card-text">{{ object.description_product_2 }}</h6>
+            <h6 class="card-text" style="color:{{ colors.eshop_font_container }};">
+                {{ object.description_product_2 }}
+            </h6>
         </div>
     </div>
-
   </div>
 </div>
 {% endblock %}

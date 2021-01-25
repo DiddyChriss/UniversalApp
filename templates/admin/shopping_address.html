@@ -6,7 +6,7 @@
 
 {% block user %}
 
-<div class="col-5 col-md-2 mt-4 ml-3">
+<div class="col-5 col-md-2 mt-4 ml-3" style="color:{{ colors.eshop_font_container }};">
     <p class="top-class">Imię*</p>
     <p class="top-class">Nazwisko*</p>
     <p class="top-class">Email*</p>
@@ -21,7 +21,8 @@
     <form action="{% url 'api-detail' pk=shoppingaddress.pk %}" method="POST">
         {% csrf_token %}
         {% render_form serializer template_pack='rest_framework/inline' %}
-        <button type="submit" class="btn btn-Primary " name="submit_form">Zapisz</button>
+        <button type="submit" class="btn btn-{{ colors.eshop_buttons_cont }}
+                            btn-outline-{{ colors.eshop_buttons_font_cont }}" name="submit_form">Zapisz</button>
     </form>
     {% endif %}
 </div>

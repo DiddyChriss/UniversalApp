@@ -8,6 +8,7 @@ from rest_framework.renderers import BrowsableAPIRenderer, TemplateHTMLRenderer,
 
 
 from eshop.models import *
+from home.models import *
 from .serializers import *
 
 class ShoppingaddressAPIView(viewsets.ModelViewSet):
@@ -21,6 +22,8 @@ class ShoppingaddressAPIView(viewsets.ModelViewSet):
         serializer_form = ''
         shoppingaddress_detial = ''
         queryset = self.filter_queryset(self.get_queryset())
+        owner_panel_shop = OwnerPanelShop.objects.all().first()
+        colors = Colors.objects.all().first()
         try:
             customer = Customer.objects.get(user=request.user)
             queryset = queryset.filter(customer=customer)
@@ -40,6 +43,8 @@ class ShoppingaddressAPIView(viewsets.ModelViewSet):
         return Response({'serializer_data': serializer.data,
                          'serializer': serializer_form,
                          'shoppingaddress': shoppingaddress_detial,
+                         'owner_panel_shop': owner_panel_shop,
+                         'colors': colors,
                          })
 
     def perform_update(self, serializer):
@@ -65,6 +70,8 @@ class OrderAPIView(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
+        owner_panel_shop = OwnerPanelShop.objects.all().first()
+        colors = Colors.objects.all().first()
         try:
             customer = Customer.objects.get(user=request.user)
             queryset = queryset.filter(customer=customer)
@@ -79,7 +86,11 @@ class OrderAPIView(viewsets.ModelViewSet):
             serializer = self.get_serializer(page, many=True)
             return self.get_paginated_response(serializer.data)
         serializer = self.get_serializer(queryset, many=True)
-        return Response({'serializer_data': serializer.data, 'shoppingaddress': shoppingaddress_detial,})
+        return Response({'serializer_data': serializer.data,
+                         'shoppingaddress': shoppingaddress_detial,
+                         'owner_panel_shop': owner_panel_shop,
+                         'colors': colors,
+                         })
 
 
 class OrderItemAPIView(viewsets.ModelViewSet):
@@ -91,6 +102,8 @@ class OrderItemAPIView(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
+        owner_panel_shop = OwnerPanelShop.objects.all().first()
+        colors = Colors.objects.all().first()
         try:
             customer = Customer.objects.get(user=request.user)
             queryset = queryset.filter(customer=customer, pk=pk)
@@ -108,6 +121,11 @@ class OrderItemAPIView(viewsets.ModelViewSet):
         pk = self.kwargs.get('pk')
         serializer = self.get_serializer(queryset, many=True)
 
-        return Response({'serializer_data': serializer.data, 'shoppingaddress': shoppingaddress_detial, 'pk': pk })
+        return Response({'serializer_data': serializer.data,
+                         'shoppingaddress': shoppingaddress_detial,
+                         'owner_panel_shop': owner_panel_shop,
+                         'colors': colors,
+                         'pk': pk,
+                         })
 
 

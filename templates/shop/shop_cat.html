@@ -6,16 +6,23 @@
     {%  for id in shop_products %}
         {% if slug|title == id.category.name|title or slug|title == id.category.category|title or slug|title == id.category.category.category|title %}
             <a href="{{ id.get_absolute_url }}">
-                <div class="card col-11 col-md-5 col-lg-5 shadow p-2 mx-auto my-4 rounded" style="width: 22rem;">
+                <div class="card col-11 col-md-5 col-lg-5 shadow p-2 mx-auto my-4 rounded"
+                     style="background-color:{{ colors.eshop_container_products_elemnts }}; width: 22rem;">
                     <img src="{{ id.image_product.url }}" class="card-img-top my-n1" style="height: 16rem">
                     <div class="card-body">
-                        <h5 class="card-title my-n2">{{ id.title_product }}</h5>
+                        <h5 class="card-title my-n2" style="color:{{ colors.eshop_font_container }};">
+                            {{ id.title_product }}
+                        </h5>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{ id.price_product }} PLN</li>
+                        <li class="list-group-item" style="color:{{ colors.eshop_font_container }};
+                                    background-color:{{ colors.eshop_container_products_elemnts }};">
+                            {{ id.price_product }} PLN
+                        </li>
                     </ul>
                     <div class="card-body my-n3">
-                        <a href="{{ id.get_absolute_url }}" class="card-link">Szczegóły Produktu</a>
+                        <a href="{{ id.get_absolute_url }}" class="card-link"
+                           style="color:{{ colors.eshop_font_container }};">Szczegóły Produktu</a>
                     </div>
                 </div>
             </a>

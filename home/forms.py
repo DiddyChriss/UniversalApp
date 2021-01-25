@@ -7,7 +7,7 @@ class ContactForms(forms.ModelForm):
                             required=True,
                             widget=forms.TextInput(
                                                     attrs={
-                                                            "class": "input-field"
+                                                            "class": "form-control"
                                                            }
                                                   )
                             )
@@ -15,7 +15,7 @@ class ContactForms(forms.ModelForm):
                                required=False,
                                widget=forms.TextInput(
                                                        attrs={
-                                                              "class": "input-field"
+                                                              "class": "form-control"
                                                               }
                                                       )
                                )
@@ -23,7 +23,7 @@ class ContactForms(forms.ModelForm):
                               required=False,
                               widget=forms.TextInput(
                                                      attrs={
-                                                            "class": "input-field"
+                                                            "class": "form-control"
                                                             }
                                                      )
                               )
@@ -31,7 +31,7 @@ class ContactForms(forms.ModelForm):
                               required=True,
                               widget=forms.EmailInput(
                                                       attrs={
-                                                             "class": "input-field"
+                                                             "class": "form-control"
                                                              }
                                                       )
                               )
@@ -39,9 +39,9 @@ class ContactForms(forms.ModelForm):
                                required=True,
                                widget=forms.Textarea(
                                                      attrs={
-                                                            "rows": 7,
-                                                            "cols": 15,
-                                                            "class": "input-field"
+                                                            "rows": 5,
+                                                            "cols": 65,
+                                                            "class": "form-control"
                                                             }
                                                      )
                                )

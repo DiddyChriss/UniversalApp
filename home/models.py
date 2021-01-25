@@ -76,7 +76,7 @@ class ContactModels(models.Model):                  #creating of data in models
     confirmation = models.BooleanField(null=True)
 
     class Meta:
-        verbose_name_plural = "2. Formularz Kontaktowego"
+        verbose_name_plural = "2. Formularz Kontaktowy"
 
     def __str__(self, *args, **kwargs):
         return (self.name)
@@ -85,13 +85,28 @@ class ContactModels(models.Model):                  #creating of data in models
 class Colors(models.Model):
     eshop_background = ColorField(default='#EEEEEE')
     eshop_navbar = ColorField(default='#0047FF')
+    eshop_font_nav = ColorField(default='#E6DCE1')
     eshop_container_products = ColorField(default='#C7C7C7')
+    eshop_container_products_elemnts = ColorField(default='#EEEEEE')
     eshop_navbar_left = ColorField(default='#BBEDEE')
-    eshop_font_nav = ColorField(default='#F6EEF6')
+    eshop_font_nav_left = ColorField(default='#0047FF')
     eshop_font_container = ColorField(default='#1594BC')
+    CLASES = [
+        ('primary', 'blue'),
+        ('secondary', 'gray'),
+        ('success', 'green'),
+        ('danger', 'red'),
+        ('warning', 'yellow'),
+        ('info', 'lightblue'),
+        ('dark', 'black'),
+        ('light', 'light'),
+        ]
+    eshop_buttons_nav = models.CharField(max_length=10, choices=CLASES, default='blue')
+    eshop_buttons_font_nav = models.CharField(max_length=10, choices=CLASES, default='light')
 
-    eshop_buttons = ColorField(default='##0047FF')
-    eshop_buttons_font = ColorField(default='#E5E5E5')
+    eshop_buttons_cont = models.CharField(max_length=10, choices=CLASES, default='blue')
+    eshop_buttons_font_cont = models.CharField(max_length=10, choices=CLASES, default='light')
+
 
     class Meta:
         verbose_name_plural = "3. Kolory"

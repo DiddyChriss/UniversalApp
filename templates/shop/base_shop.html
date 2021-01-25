@@ -6,7 +6,9 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
           <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
           <!-- Google Fonts Roboto -->
@@ -18,8 +20,8 @@
           <!-- Bootstrap core CSS -->
         <title>{{ owner_panel_shop.company_name }} - shop</title>
         <link rel="shortcut icon" href="{{ owner_panel_shop.get_logo }}">
-        <link type="text/css" rel="'stylesheet" href="{% static 'css/col.css' %}">
-    </head>
+        <link type="text/css" rel="stylesheet" href="{% static 'css22/col.css' %}">
+  </head>
 <body style="background-color: {{ colors.eshop_background }}">
     <div class="container">
         <!-- comerc -->
@@ -33,18 +35,14 @@
     </div>
     <nav class="navbar navbar-light navbar-expand-md shadow-sm mb-1 rounded"
          style="background-color:{{ colors.eshop_navbar }};">
-        <a class="navbar-brand mr-auto" href="{{ logo.get_logo }}">
+        <a class="navbar-brand mr-auto" href="/">
             <img class="image-logo" style="height: 4rem" src="{{ owner_panel_shop.get_logo }}" alt="Logo">
         </a>
-
-
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarToggleExternalTop" aria-expanded="false"
                     aria-label="Toggle navigation">
                 <span      class="navbar-toggler-icon"></span>
             </button>
-
-
             <div class="collapse navbar-collapse nav nav-pills " id="navbarToggleExternalTop">
                 <a class="mr-auto badge badge-pill w-25 p-3 badge-light mt-2 mx-md-auto" href="/sklep">
                     <span class="">e-Shop</span>
@@ -58,23 +56,33 @@
                             </a>
                         </span>
                         <a href="/sklep/wyloguj/out/">
-                            <button type="button" class="btn btn-outline-light"  name="log_off">
+                            <button type="button" class="btn btn-{{ colors.eshop_buttons_nav }}
+                            btn-outline-{{ colors.eshop_buttons_font_nav }}" name="log_off">
                                 <i class="fas fa-sign-out-alt"
                                    title="wyloguj"></i>
                             </button>
                         </a>
                     {% else %}
-                        <a style="color:{{ colors.eshop_font_nav }};" href="/sklep/logowanie/in/">
-                            <button type="button" class="btn btn-outline-light">
+                        <a href="/sklep/logowanie/in/">
+                            <button type="button" class="btn btn-{{ colors.eshop_buttons_nav }}
+                            btn-outline-{{ colors.eshop_buttons_font_nav }}">
                                 zaloguj <i class="fas fa-sign-in-alt"
                                            title="zaloguj"></i>
                             </button>
                         </a>
                     {% endif %}
-                        <a style="color:{{ colors.eshop_font_nav }};" href="/">
-                            <button type="button" class="btn btn-outline-light">
+                        <a href="/">
+                            <button type="button" class="btn btn-{{ colors.eshop_buttons_nav }}
+                            btn-outline-{{ colors.eshop_buttons_font_nav }}">
                                 <i class="fas fa-home"
                                    title="Strona Główna"></i>
+                            </button>
+                        </a>
+                        <a href="/kontakt">
+                            <button type="button" class="btn btn-{{ colors.eshop_buttons_nav }}
+                            btn-outline-{{ colors.eshop_buttons_font_nav }}">
+                                <i class="fas fa-envelope"
+                                   title="Kontakt"></i>
                             </button>
                         </a>
                 </div>
@@ -83,8 +91,9 @@
     <nav class="navbar navbar-light shadow-sm p-2 mb-3 rounded" style="background-color:{{ colors.eshop_navbar }};">
         <form class="form-inline" action='.' method='POST'> {% csrf_token %}
             {{ form.search_product }}
-            <button type="submit" class="btn btn-outline-light"
-                    name="search">Szukaj</button>
+            <button type="submit" class="btn btn-{{ colors.eshop_buttons_nav }}
+                            btn-outline-{{ colors.eshop_buttons_font_nav }}" name="search">Szukaj
+            </button>
         </form>
         <a class="badge badge-pill badge-light mx-2 px-2 py-2 ml-auto" href="{% url 'eshop:cart' %}">
             {% if shop_products_cart == 0 %}
@@ -102,25 +111,27 @@
     </nav>
     <div class="container row mx-auto">
         <div class="container col-12 col-md-3 col-lg-2">
-            <div class="alert shadow-sm p-2 rounded"
+            <div class="alert shadow-sm p-2 rounded shadow-lg"
                  style="background-color:{{ colors.eshop_navbar_left }};" role="alert">
                 <!-- Mobile/nevbar -->
-                <nav class="navbar navbar-expand-md navbar-light">
+                <nav class="navbar navbar-expand-md navbar-light  mb-5">
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarToggleExternalContent" aria-expanded="false"
                             aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                         {% recursetree category %}
-                        <div class="collapse navbar-collapse nav nav-pills flex-column" id="navbarToggleExternalContent">
-                            <a class="nevbar nav-link mx-n4 font-weight-bold"
-                               href="/sklep/{{ node.name }}">
-                                {{ node.name }}
+                        <div class="collapse navbar-collapse nav nav-pills flex-column"
+                             id="navbarToggleExternalContent">
+                            <a class="nevbar mx-n4 my-2 font-weight-bold"
+                               style="color:{{ colors.eshop_font_nav_left }};" href="/sklep/{{ node.name }}">
+                                {{ node.name|title }}
                             </a>
-                            <nav class="nav nav-pills mx-n2 flex-column">
+                            <nav class="nav nav-pills mx-n2 flex-column"
+                                 style="color:{{ colors.eshop_font_nav_left }};">
                                 <li>
                                 {% if not node.is_leaf_node %}
-                                    <ul  class="ml-n4">
+                                    <ul class="ml-n4 my-2">
                                         <small>{{ children }}</small>
                                     </ul>
                                 {% endif %}
@@ -133,7 +144,7 @@
             </div>
         </div>
             <!-- container products -->
-        <div class="container mx-auto col-11 col-md-9 col-lg-8 row alert shadow-sm mb-5 rounded"
+        <div class="container mx-auto col-11 col-md-9 col-lg-8 row alert shadow-lg mb-5 rounded"
              style="background-color:{{ colors.eshop_container_products }};" role="alert">
         {% block productshop %}
 
@@ -142,7 +153,7 @@
         <!-- comtainer with products -->
         <div class="container col-11 col-md-10 col-lg-2 ">
             <!-- comerc2 -->
-            <div class="alert alert-primary shadow-sm p-3 mb-5 rounded" role="alert">
+            <div class="alert alert-primary shadow-sm p-3 mb-5 rounded shadow-lg" role="alert">
               REKLAMA 2!
             </div>
             <!-- end comerc -->
@@ -197,7 +208,7 @@
     </div>
     <a class="navbar-brand ml-auto mt-2" href="https://chriss.pythonanywhere.com/">
         <p class="ml-n3 small mb-n2" >Created by..</p>
-        <img class="image-logo" style="height: 3rem" src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
+        <img class="image-logo" style="height: 2.5rem" src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
     </a>
 </nav>
 <!-- Optional JavaScript -->

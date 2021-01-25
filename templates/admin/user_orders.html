@@ -4,7 +4,7 @@
 
 {% block user %}
 
-<div class="col mx-2 my-2">
+<div class="col mx-2 my-2" style="color:{{ colors.eshop_font_container }};">
     {% for order in serializer_data %}
     <div class="my-3">
         <p class="top-class">Numer zamówienia: <span class="font-weight-bold">{{ order.order_pk }}</span></p>

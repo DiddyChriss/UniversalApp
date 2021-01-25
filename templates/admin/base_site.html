@@ -6,8 +6,11 @@
 
 {% block branding %}
 <h1 id="site-name">
-    <a href="{% url 'admin:index' %}">
-        <img src="{% static 'img/logo.png' %}" height="70px" />
+    <a class="navbar-brand mr-auto" href="https://chriss.pythonanywhere.com/">
+        <p class="ml-n3 small" style="margin: 0px 0px 0px -10px;">Created by..</p>
+        <img class="image-logo" style="height: 2.5rem; margin: -10px 0px 0px 0px;"
+             src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
+        <p style="margin: 10px 0px 0px -10px;">Your Admin Panel..</p>
     </a>
 </h1>
 {% endblock %}

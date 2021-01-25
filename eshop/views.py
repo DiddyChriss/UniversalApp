@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRe
 from django.template import loader
 from django.core.mail import send_mail
 from .forms import *
+from home.views import *
 from .models import *
 from home.models import *
 from django.contrib.auth import authenticate, login, logout
@@ -180,6 +181,7 @@ class ShopGetView():#all get class
         user_form = UserForms()
         email_form = EmailShop()
         login_form = UserLogin()
+        contact_form = ContactForms()
 
         owner_panel_shop = OwnerPanelShop.objects.all().first()
         colors = Colors.objects.all().first()
@@ -218,6 +220,7 @@ class ShopGetView():#all get class
             'user_form': user_form,
             'email_form': email_form,
             'login_form': login_form,
+            'contact_form': contact_form,
             'owner_panel_shop': owner_panel_shop,
             'colors': colors,
             'shop_products': queryset,
