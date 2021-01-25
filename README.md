@@ -1,6 +1,6 @@
 # UniversalApp
->  
-> 
+> Application eshop partly based on ridelectric structure,
+> however definitely more develop. 
 
 ## Table of contents
 * [General info](#general-info)
@@ -11,6 +11,9 @@
 * [Contact](#contact)
 
 ## General info
+> SuperUser have possibility to
+> modify details of Owner - like : logo, company data, colors of
+> templates elements and so on. 
 
 ## Technologies
 * Python - version 3.8
@@ -21,12 +24,11 @@
 * MySQL
 
 ## Instructions
-####
-![Shop](READMEimg/Shop.png)
+#### comming soon..
 
 
 ## Live View
-Live view available on (www..pl/)
+Live view available on (www..pl/) - in progress..
 
 ## Status
 In progress
