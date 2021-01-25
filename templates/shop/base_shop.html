@@ -1,0 +1,268 @@
+{% load mptt_tags %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+          <!-- Google Fonts Roboto -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+          <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+              crossorigin="anonymous">
+          <!-- Bootstrap core CSS -->
+        <title>{{ owner_panel_shop.company_name }} - shop</title>
+        <link rel="shortcut icon" href="{{ owner_panel_shop.get_logo }}">
+        <link type="text/css" rel="'stylesheet" href="{% static 'css/col.css' %}">
+    </head>
+<body style="background-color: {{ colors.eshop_background }}">
+    <div class="container">
+        <!-- comerc -->
+        <div class="alert alert-primary shadow-sm p-3 mb-5 rounded" role="alert">
+          <p> REKLAMA 1!</p>
+            <p class="badge-pill badge-light my-1 text-center mx-auto">
+                trwaja prace nad stroną.. prosimy o cierpliwość..
+            </p>
+        </div>
+        <!-- end comerc -->
+    </div>
+    <nav class="navbar navbar-light navbar-expand-md shadow-sm mb-1 rounded"
+         style="background-color:{{ colors.eshop_navbar }};">
+        <a class="navbar-brand mr-auto" href="{{ logo.get_logo }}">
+            <img class="image-logo" style="height: 4rem" src="{{ owner_panel_shop.get_logo }}" alt="Logo">
+        </a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarToggleExternalTop" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span      class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse nav nav-pills " id="navbarToggleExternalTop">
+                <a class="mr-auto badge badge-pill w-25 p-3 badge-light mt-2 mx-md-auto" href="/sklep">
+                    <span class="">e-Shop</span>
+                </a>
+                <div>
+                    {% if user.is_authenticated %}
+                        <span style="color:{{ colors.eshop_font_nav }};">
+                            Witaj
+                            <a style="color:{{ colors.eshop_font_nav }};" href="/sklep/api/{{ shopping_address_pk }}">
+                                {{ user|upper }}
+                            </a>
+                        </span>
+                        <a href="/sklep/wyloguj/out/">
+                            <button type="button" class="btn btn-outline-light"  name="log_off">
+                                <i class="fas fa-sign-out-alt"
+                                   title="wyloguj"></i>
+                            </button>
+                        </a>
+                    {% else %}
+                        <a style="color:{{ colors.eshop_font_nav }};" href="/sklep/logowanie/in/">
+                            <button type="button" class="btn btn-outline-light">
+                                zaloguj <i class="fas fa-sign-in-alt"
+                                           title="zaloguj"></i>
+                            </button>
+                        </a>
+                    {% endif %}
+                        <a style="color:{{ colors.eshop_font_nav }};" href="/">
+                            <button type="button" class="btn btn-outline-light">
+                                <i class="fas fa-home"
+                                   title="Strona Główna"></i>
+                            </button>
+                        </a>
+                </div>
+            </div>
+    </nav>
+    <nav class="navbar navbar-light shadow-sm p-2 mb-3 rounded" style="background-color:{{ colors.eshop_navbar }};">
+        <form class="form-inline" action='.' method='POST'> {% csrf_token %}
+            {{ form.search_product }}
+            <button type="submit" class="btn btn-outline-light"
+                    name="search">Szukaj</button>
+        </form>
+        <a class="badge badge-pill badge-light mx-2 px-2 py-2 ml-auto" href="{% url 'eshop:cart' %}">
+            {% if shop_products_cart == 0 %}
+                <span class="mr-1">
+                    0
+                </span>
+            {% else %}
+                <span class="badge badge-danger z-depth-1 mr-1">
+                    {{ shop_products_cart }}
+                </span>
+            {% endif %}
+            <i class="fas fa-shopping-cart mr-1"></i>
+            <span class="clearfix d-none d-sm-inline-block">Koszyk</span>
+        </a>
+    </nav>
+    <div class="container row mx-auto">
+        <div class="container col-12 col-md-3 col-lg-2">
+            <div class="alert shadow-sm p-2 rounded"
+                 style="background-color:{{ colors.eshop_navbar_left }};" role="alert">
+                <!-- Mobile/nevbar -->
+                <nav class="navbar navbar-expand-md navbar-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarToggleExternalContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                        {% recursetree category %}
+                        <div class="collapse navbar-collapse nav nav-pills flex-column" id="navbarToggleExternalContent">
+                            <a class="nevbar nav-link mx-n4 font-weight-bold"
+                               href="/sklep/{{ node.name }}">
+                                {{ node.name }}
+                            </a>
+                            <nav class="nav nav-pills mx-n2 flex-column">
+                                <li>
+                                {% if not node.is_leaf_node %}
+                                    <ul  class="ml-n4">
+                                        <small>{{ children }}</small>
+                                    </ul>
+                                {% endif %}
+                                </li>
+                            </nav>
+                        {% endrecursetree %}
+                        </div>
+                </nav>
+                <!-- end of mobile bar -->
+            </div>
+        </div>
+            <!-- container products -->
+        <div class="container mx-auto col-11 col-md-9 col-lg-8 row alert shadow-sm mb-5 rounded"
+             style="background-color:{{ colors.eshop_container_products }};" role="alert">
+        {% block productshop %}
+
+        {% endblock %}
+        </div>
+        <!-- comtainer with products -->
+        <div class="container col-11 col-md-10 col-lg-2 ">
+            <!-- comerc2 -->
+            <div class="alert alert-primary shadow-sm p-3 mb-5 rounded" role="alert">
+              REKLAMA 2!
+            </div>
+            <!-- end comerc -->
+        </div>
+    </div>
+<nav class="navbar bottom navbar-light shadow-sm mb-1 rounded" style="background-color:{{ colors.eshop_navbar }};">
+    <a class="navbar-brand mr-auto my-2" href="/">
+        <img class="image-logo" style="height: 4rem" src="{{ owner_panel_shop.get_logo }}" alt="Logo">
+    </a>
+    <div class="alert col-12 col-md-3 mb-n1"
+         style="background-color:{{ colors.eshop_container_products }};"
+         role="alert">
+        <a href="{{ owner_panel_shop.get_regulatins_pdf }}"
+           class="alert-link" style="color:{{ colors.eshop_font_container }};"><p>Regulamin</p></a>
+        <a href="{{ owner_panel_shop.get_privacy_policy_pdf }}"
+           class="alert-link" style="color:{{ colors.eshop_font_container }};"><p>Polityka Prywatności</p></a>
+        <a href="https://www.facebook.com/ridelectricKRK/"
+           class="alert-link" style="color:{{ colors.eshop_font_container }};"><p>Facebook: @ridelectricKRK</p></a>
+    </div>
+    <div class="alert col-12 col-md-5 mx-auto mb-n1"
+         style="background-color:{{ colors.eshop_container_products }}; color:{{ colors.eshop_font_container }};"
+         role="alert">
+        <div class="row">
+            <div class="col-6">
+                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_container }};">
+                    <p class="text-center">Kontakt:</p>
+                </a>
+                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_container }};">
+                    <h5 class="text-center">{{ owner_panel_shop.company_name }}</h5>
+                </a>
+            </div>
+            <div class="col-6">
+                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_container }};">
+                    <p class="font-weight-normal my-1">
+                        {{ owner_panel_shop.street }}
+                        {{ owner_panel_shop.street_number }},
+                        {{ owner_panel_shop.zipcode }}
+                        {{ owner_panel_shop.city }}
+                    </p>
+                </a>
+                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_container }};">
+                    <p class="font-weight-normal my-1">{{ owner_panel_shop.state }}</p>
+                </a>
+                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_container }};">
+                    <p class="font-weight-normal my-1">{{ owner_panel_shop.email }}</p>
+                </a>
+                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_container }};">
+                    <p class="font-weight-normal my-1">{{ owner_panel_shop.phone_number }}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <a class="navbar-brand ml-auto mt-2" href="https://chriss.pythonanywhere.com/">
+        <p class="ml-n3 small mb-n2" >Created by..</p>
+        <img class="image-logo" style="height: 3rem" src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
+    </a>
+</nav>
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script type="text/javascript">
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+
+		function getCookie(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+
+		function uuidv4() {
+		  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+		    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+		    return v.toString(16);
+		  });
+		}
+
+
+		let device = getCookie('device')
+
+		if (device == null || device == undefined){
+			device = uuidv4()
+		}
+
+		document.cookie ='device=' + device + ";domain=;path=/"
+	    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+

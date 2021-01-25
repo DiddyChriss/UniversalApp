@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="{{ owner_panel_shop.get_logo }}">
+    <title>{{ owner_panel_shop.company_name }} - Contact</title>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"> </script>
+    <!-- Compiled and minified CSS -->
+    <link type="text/css" rel="'stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+             });
+    </script>
+</head>
+<body class="body-contact" style="background-color:{{ colors.eshop_background }}">
+                <!--nevbar-->
+<nav class="nav-extended darken-3 z-depth-5"
+     style="background-color:{{ colors.eshop_navbar }}; height: 70px; opacity:0.9;">
+    <a href="/">
+        <img id="logo" style="width: 170px; height: 80px; padding: 5px 0px 15px 15px;"
+             src="{{ owner_panel_shop.get_logo }}" alt="image"/>
+    </a>
+    <a class="sidenav-trigger" style="color:{{ colors.eshop_font_nav }};" href="#" data-target="slide-out" >
+        <i class="material-icons">menu</i>
+    </a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/" style="color:{{ colors.eshop_font_nav }};"><h7>Home</h7></a></li>
+        <li><a href="/sklep" style="color:{{ colors.eshop_font_nav }};"><h7>Sklep</h7></a></li>
+        <li><a href="/kontakt" style="color:{{ colors.eshop_font_nav }};"><h7>Kontakt</h7></a></li>
+    </ul>
+</nav>
+<ul id="slide-out" class="sidenav darken-3 z-depth-5" style="background-color:{{ colors.eshop_navbar }}; opacity:0.8;">
+    <li><a href="/"  style="color:{{ colors.eshop_font_nav }};">
+        <i class="material-icons"  style="color:{{ colors.eshop_font_nav }};">home</i>Home</a></li>
+    <li><a href="/sklep" style="color:{{ colors.eshop_font_nav }};">
+        <i class="material-icons" style="color:{{ colors.eshop_font_nav }};">folder_shared</i>Sklep</a></li>
+    <li><a href="/kontakt" style="color:{{ colors.eshop_font_nav }};">
+        <i class="material-icons" style="color:{{ colors.eshop_font_nav }};">mail</i>Kontakt</a></li>
+</ul>
+<p></p>
+<div class="container darken-3 z-depth-5"
+     style="background-color:{{ colors.eshop_container_products }};
+     color:{{ colors.eshop_font_container }}; padding: 15px 15px 15px 15px; ">
+    <div class="container">
+        <div class="center ">
+            <h5 style="padding: 40px 0px 0px 0px;">Masz pytania? A może jesteś zainteresowany produktem?</h5>
+            <h5 style="padding: 0px 0px 40px 0px;">Czekamy na Twoją wiadomość 👍</h5>
+            <h5 style="color:white;">{{confirmation_text}}</h5>
+            <h6 style="color:white; padding:0px 0px 40px 0px;"> {{send}} </h6>
+            <p></p>
+        </div>
+            <div class="row">
+                <form class="col s12" action="." method="POST"> {% csrf_token %}
+                    <div class="row" style="color:{{ colors.eshop_font_container }};">
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">account_circle</i>
+                            {{ contact_form.name }}
+                          <label style="color:{{ colors.eshop_font_container }};" for="firstname">Imię*</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">accessibility</i>
+                          {{ contact_form.surname }}
+                          <label style="color:{{ colors.eshop_font_container }};" for="surname">Nazwisko</label>
+                        </div>
+                     </div>
+                      <div class="row">
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">business_center</i>
+                          {{ contact_form.company }}
+                          <label style="color:{{ colors.eshop_font_container }};" for="company">Firma</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">email</i>
+                          {{ contact_form.email }}
+                          <label style="color:{{ colors.eshop_font_container }};" for="email">Email*</label>
+                        </div>
+                      </div>
+                        <div class="row">
+                              <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    {{ contact_form.question }}
+                                    <label style="color:{{ colors.eshop_font_container }};" for="question">
+                                        Wiadomość*
+                                    </label>
+                                </div>
+                              </div>
+                          </div>
+                        <p>
+                          <label>
+                            {{ contact_form.confirmation }}
+                            <span style="color:{{ colors.eshop_font_container }};">
+                                Wyślij potwierdzenie na mój adres E-mail
+                            </span>
+                          </label>
+                        </p>
+                        <button class="btn waves-effect waves-light" type="submit" name="action"
+                                style="color:{{ colors.eshop_buttons_font }};
+                                 background-color:{{ colors.eshop_buttons }};">
+                            Wyślij<i class="material-icons right" >send</i>
+                        </button>
+                </form>
+              </div>
+            <div class="center" style="color:{{ colors.eshop_font_container }};">
+                <h5>{{ owner_panel_shop.company_name }}</h5>
+                <h5>{{ owner_panel_shop.street }} {{ owner_panel_shop.street_number }}</h5>
+                <h5>{{ owner_panel_shop.zipcode }} {{ owner_panel_shop.city }}</h5>
+                <adress><a href="mailto: {{ owner_panel_shop.email }}">
+                    <h5 style="color:{{ colors.eshop_font_container }};">
+                    {{ owner_panel_shop.email }}</h5></a></adress>
+                <h5 style="padding: 0px 0px 40px 0px;">{{ owner_panel_shop.phone_number }}</h5>
+            </div>
+        <div class="row container center" style="padding: 30px 0px 30px 0px;">
+
+
+
+            <a href="" >
+                <img class="ico-about" src="">
+            </a>
+            <a href="/">
+                <img class="ico-about" src="">
+            </a>
+
+
+
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

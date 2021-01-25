@@ -1,0 +1,72 @@
+
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+      <!-- Google Fonts Roboto -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css2-shop/style.css' %}" type="text/css">
+    <title>ridelectric - shop</title>
+</head>
+<body>
+<div class="container mt-5 mx-auto">
+    <div class=" my-5 mx-auto">
+        <p class="mt-3 text-center">
+            Dokonaj płatności na kwotę: {{ order.get_vat_price|floatformat:2 }} PLN, za pomocą jednej z ponizszych opcji:
+        </p>
+    </div>
+<div class="text-center" id="paypal-button-container"></div>
+</div>
+
+  <!----------------------- PAYPAL ----------------------------------------------------------------------------->
+
+
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AQ5b0MTz3qoqXRN6px3DW7Hc9oOZjOpL21rtaRFH5_d0g4McyE6mRE4gyvqpYjg6qkcXQgzvwqdx6oL5&currency=PLN"></script>
+
+
+    <script src="https://www.paypal.com/sdk/js?client-id=-----------------------&currency=PLN"></script>
+
+    <script>
+      var price = '{{ order.get_vat_price|floatformat:2 }}'
+      paypal.Buttons({
+        style: {
+           layout:  'vertical',
+           color:   'blue',
+           shape:   'rect',
+           label:   'paypal'
+        },
+        createOrder: function(data, actions) {
+          // This function sets up the details of the transaction, including the amount and line item details.
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: price
+              }
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          // This function captures the funds from the transaction.
+          return actions.order.capture().then(function(details) {
+            // This function shows a transaction success message to your buyer.
+            alert('Platność użytkownika ' + details.payer.name.given_name + ' powiodła się');
+            window.location.href = 'http://127.0.0.1:8000/sklep/koszyk/zaplac/paypal/end';
+            let con = 'confirmation of transaction - success!';
+          });
+        }
+      }).render('#paypal-button-container');
+      //This function displays Smart Payment Buttons on your web page.
+    </script>
+  <!----------------------- END PAYPAL ------------------------------------------------------->
+</body>
