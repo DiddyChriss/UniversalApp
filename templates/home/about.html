@@ -1,0 +1,117 @@
+{% load mptt_tags %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="shortcut icon" href="{{ owner_panel_shop.get_logo }}">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+              crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="{% static 'css22/clases.css' %}">
+    <title>{{ owner_panel_shop.company_name }}</title>
+
+</head>
+{% if colors.home_background_img.url is not None %}
+    <body style="background-image: url({{ colors.home_background_img.url }}); color:{{ colors.home_font }};">
+{% else %}
+    <body style="color:{{ colors.home_font }};">
+{% endif %}
+    <nav class="navbar navbar-light mt-n2 navbar-expand-md ">
+        <a class="navbar-brand ml-4" href="/">
+            <img class="image-logo mt-4" style="height: 3.5rem" src="{{ owner_panel_shop.get_logo }}" alt="Logo">
+        </a>
+        <button class="navbar-toggler btn-{{ colors.eshop_buttons_nav }}
+                btn-outline-{{ colors.eshop_buttons_font_nav }}"
+                type="button" data-toggle="collapse" data-target="#navbarToggleExternalTopNice"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"  style="color:{{ colors.eshop_buttons_font_nav }};
+                               background-colors:{{ colors.eshop_buttons_nav }};"></i>
+        </button>
+            <div class="collapse navbar-collapse nav nav-pills " id="navbarToggleExternalTopNice">
+                <div class="row ml-auto mt-4">
+                    <a class="ml-md-n1 mx-3" style="color: {{ colors.home_font_link }};" href="/">
+                        <p>Home</p>
+                    </a>
+                    <a class="mx-3" style="color: {{ colors.home_font_link }};" href="/onas/">
+                        <p>O Nas</p>
+                    </a>
+                    <a class="mx-3 mt-n4" style="color: {{ colors.home_font_link }};" href="/sklep/">
+                        <strong><p class="px-2 py-4" style="background-color:{{ colors.home_background_eshop }};">
+                            E-SHOP
+                        </p></strong>
+                    </a>
+                    <a class="mr-md-5 mx-3" style="color: {{ colors.home_font_link }};" href="/kontakt/">
+                        <p>Kontakt</p>
+                    </a>
+                </div>
+            </div>
+    </nav>
+
+<div class="container mx-auto">
+    <div class="col text-center pt-3 mt-4 pb-5 mb-5" style="background-color: {{ colors.about_background_con }};
+                     color: {{ colors.about_background_con_font }}">
+        <h1 class="mt-5">{{ owner_panel_shop.about_title }}</h1>
+        <h3>{{ owner_panel_shop.about_subtitle }}</h3>
+        <p>{{ owner_panel_shop.about_textarea_1 }}</p>
+
+    </div>
+    <div class="row text-center mb-5 ">
+        {% if colors.about_img_1.url is not None %}
+            <img class="home-img-about col-12 col-md-5 badge-pill mb-5 mb-lg-0" src="{{ colors.about_img_1.url }}">
+        {% else %}
+            <img class="home-img-about col-12 col-md-5 badge-pill mb-5 mb-lg-0" src="">
+        {% endif %}
+        <div class="col-12 col-md-7" style="background-color: {{ colors.about_background_con }};
+                     color: {{ colors.about_background_con_font }}">
+            <h4 class="mt-5">{{ owner_panel_shop.about_img_title_1 }}</h4>
+            <p class="">{{ owner_panel_shop.about_textarea_2 }}</p>
+        </div>
+    </div>
+    <div class="row text-center mb-5">
+        <div class="col-12 col-md-7"  style="background-color: {{ colors.about_background_con }};
+                     color: {{ colors.about_background_con_font }}">
+            <h4 class="mt-5">{{ owner_panel_shop.about_img_title_2 }}</h4>
+            <p class="">{{ owner_panel_shop.about_textarea_3 }}</p>
+        </div>
+        {% if colors.about_img_1.url is not None %}
+            <img class="home-img-about col-12 col-md-5 badge-pill mb-5 mb-lg-0" src="{{ colors.about_img_2.url }}">
+        {% else %}
+            <img class="home-img-about col-12 col-md-5 badge-pill mb-5 mb-lg-0" src="">
+        {% endif %}
+    </div>
+</div>
+
+    <nav class="navbar navbar-light bottom mt-3 mb-n3 navbar-expand-md">
+        <div class="row ">
+            <a class="alert-link col-sm-6" style="color: {{ colors.home_font_link }};"
+                href="{{ owner_panel_shop.get_privacy_policy_pdf }}"><small>Polityka Prywatności</small>
+            </a>
+            <a class="alert-link col-sm-6 mt-2" style="color: {{ colors.home_font_link }};"
+               href="{{ owner_panel_shop.get_regulatins_pdf }}"><small>Regulamin</small>
+            </a>
+        </div>
+        <a class="navbar-brand ml-auto mt-2" href="https://chriss.pythonanywhere.com/">
+            <p class="ml-n3 small mb-n2">Created by..</p>
+            <img class="image-logo" style="height: 2.5rem" src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
+        </a>
+    </nav>
+<!-- JavaScript Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+</body>
+</html>

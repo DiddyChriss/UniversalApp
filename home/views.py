@@ -13,10 +13,11 @@ from eshop.models import *
 from eshop.views import *
 
 
+class HomeView(ShopGetView, View):
+    template_name = 'home/home.html'
 
-def base_view(request):
-    template_name = 'home/base_home.html'
-    return render(request, template_name, {})
+class AboutView(ShopGetView, View):
+    template_name = 'home/about.html'
 
 class ContactView(ShopGetView, View):
     template_name = 'home/contact.html'

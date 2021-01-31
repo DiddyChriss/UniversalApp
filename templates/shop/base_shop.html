@@ -8,12 +8,8 @@
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-          <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-          <!-- Google Fonts Roboto -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-          <!-- Bootstrap CSS -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"><!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
               integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
               crossorigin="anonymous">
@@ -38,10 +34,11 @@
         <a class="navbar-brand mr-auto" href="/">
             <img class="image-logo" style="height: 4rem" src="{{ owner_panel_shop.get_logo }}" alt="Logo">
         </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
+            <button class="navbar-toggler btn-{{ colors.eshop_buttons_nav }}
+                    btn-outline-{{ colors.eshop_buttons_font_nav }}" type="button" data-toggle="collapse"
                     data-target="#navbarToggleExternalTop" aria-expanded="false"
                     aria-label="Toggle navigation">
-                <span      class="navbar-toggler-icon"></span>
+                <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse nav nav-pills " id="navbarToggleExternalTop">
                 <a class="mr-auto badge badge-pill w-25 p-3 badge-light mt-2 mx-md-auto" href="/sklep">

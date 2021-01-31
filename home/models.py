@@ -39,6 +39,14 @@ class OwnerPanelShop(models.Model):
     regulations_pdf = models.FileField(upload_to='owner_panel/', null=True, validators=[validate_pdf])
     privacy_policy_pdf = models.FileField(upload_to='owner_panel/', null=True, validators=[validate_pdf])
 
+    about_title = models.CharField(max_length=15, null=True)
+    about_subtitle = models.CharField(max_length=20, null=True)
+    about_textarea_1 = models.TextField(null=True)
+    about_img_title_1 = models.CharField(max_length=20, null=True)
+    about_textarea_2 = models.TextField(null=True)
+    about_img_title_2 = models.CharField(max_length=20, null=True)
+    about_textarea_3 = models.TextField(null=True)
+
     class Meta:
         verbose_name_plural = "1. Info-Firma"
 
@@ -107,6 +115,19 @@ class Colors(models.Model):
     eshop_buttons_cont = models.CharField(max_length=10, choices=CLASES, default='blue')
     eshop_buttons_font_cont = models.CharField(max_length=10, choices=CLASES, default='light')
 
+    home_font = ColorField(default='#030303')
+    home_font_link = ColorField(default='#0A0A0A')
+    home_background_eshop = ColorField(default='#ACACAC')
+
+    home_background_img = models.FileField(upload_to='owner_panel/home/', null=True, validators=[validate_logo])
+    home_img_1 = models.FileField(upload_to='owner_panel/home/', null=True, validators=[validate_logo])
+    home_img_2 = models.FileField(upload_to='owner_panel/home/', null=True, validators=[validate_logo])
+    home_img_3 = models.FileField(upload_to='owner_panel/home/', null=True, validators=[validate_logo])
+
+    about_background_con = ColorField(default='#ECECEC')
+    about_background_con_font = ColorField(default='#0A0A0A')
+    about_img_1 = models.FileField(upload_to='owner_panel/about/', null=True, validators=[validate_logo])
+    about_img_2 = models.FileField(upload_to='owner_panel/about/', null=True, validators=[validate_logo])
 
     class Meta:
         verbose_name_plural = "3. Kolory"
