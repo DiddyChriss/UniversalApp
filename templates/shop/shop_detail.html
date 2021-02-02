@@ -60,17 +60,20 @@
         <div class="">
             <p class="card-text">
                 <p class="" style="color:{{ colors.eshop_font_container }};">
-                    {{ object.price_product|floatformat:2 }} PLN netto
+                    {{ object.price_product|floatformat:2 }} PLN
                 </p>
             </p>
         </div>
         <div class="my-3">
+            {% if object.category.add_to_cart_button == False %}
+            <a class="form-inline" href="/kontakt">
+                <button type="submit" class="btn btn-primary mx-auto" name="add_to_cart">Zapytaj o Produkt</button>
+            </a>
+            {% else %}
             <form class="form-inline " action='.' method='POST'> {% csrf_token %}
-                <button type="submit" class="btn btn-{{ colors.eshop_buttons_cont }}
-                            btn-outline-{{ colors.eshop_buttons_font_cont }} mx-auto" name="add_to_cart">
-                    Dodaj do Koszyka
-                </button>
+                <button type="submit" class="btn btn-primary mx-auto" name="add_to_cart">Dodaj do Koszyka</button>
             </form>
+            {% endif %}
         </div>
         <div class="my-4">
             <a href="/contact">

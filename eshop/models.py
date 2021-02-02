@@ -22,6 +22,7 @@ class Customer(models.Model):
 
 class Category(MPTTModel):
     name = models.CharField(max_length=50, unique=True)
+    add_to_cart_button = models.BooleanField(null=True, default=True)
     category = TreeForeignKey(
                               'self',
                               on_delete=models.CASCADE,

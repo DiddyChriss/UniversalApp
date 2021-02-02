@@ -19,8 +19,10 @@
     <title>{{ owner_panel_shop.company_name }}</title>
 
 </head>
-{% if colors.home_background_img.url is not None %}
-    <body style="background-image: url({{ colors.home_background_img.url }}); color:{{ colors.home_font }};">
+{% if owner_panel_shop.home_background_img.url is not None %}
+    <body style="background-image: url({{ owner_panel_shop.home_background_img.url }});
+     background-repeat: no-repeat; background-size:100%; background-attachment: fixed;
+      background-size: cover; color:{{ colors.home_font }};">
 {% else %}
     <body style="color:{{ colors.home_font }};">
 {% endif %}
@@ -30,13 +32,14 @@
         </a>
         <button class="navbar-toggler btn-{{ colors.eshop_buttons_nav }}
                 btn-outline-{{ colors.eshop_buttons_font_nav }}"
+                style="background-color:{{ colors.home_background_eshop }};"
                 type="button" data-toggle="collapse" data-target="#navbarToggleExternalTopNice"
                 aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"  style="color:{{ colors.eshop_buttons_font_nav }};
                                background-colors:{{ colors.eshop_buttons_nav }};"></i>
         </button>
             <div class="collapse navbar-collapse nav nav-pills " id="navbarToggleExternalTopNice">
-                <div class="row ml-auto mt-4">
+                <div class="row ml-auto mt-5">
                     <a class="ml-md-n1 mx-3" style="color: {{ colors.home_font_link }};" href="/">
                         <p>Home</p>
                     </a>
@@ -44,7 +47,8 @@
                         <p>O Nas</p>
                     </a>
                     <a class="mx-3 mt-n4" style="color: {{ colors.home_font_link }};" href="/sklep/">
-                        <strong><p class="px-2 py-4" style="background-color:{{ colors.home_background_eshop }};">
+                        <strong><p class="px-2 py-4" style="background-color:{{ colors.home_background_eshop }};
+                                                            color:{{ colors.home_background_eshop_font }};">
                             E-SHOP
                         </p></strong>
                     </a>
@@ -56,18 +60,30 @@
     </nav>
     <div class="container">
         <div class="col margin-container-img">
-            <h1 class="col title-home"><strong>Nazwa firmy</strong></h1>
-             <a class="col-md-5 link-home col-lg-4 badge badge-pill w-20 p-3 badge-light" href="/sklep">
-                 <span class="">Przejdź do e-Shop</span>
+            <h1 class="col title-home">
+                <strong class="badge badge-pill w-20 p-3 badge-light"
+                        style="background-color:{{ colors.home_background_eshop }};
+                                color:{{ colors.home_background_eshop_font }};">
+                {{ owner_panel_shop.home_title|upper }}
+                </strong>
+            </h1>
+             <a class="col-md-5 link-home col-lg-3 badge badge-pill w-23 p-3 badge-light" href="/sklep"
+             style="background-color:{{ colors.home_background_eshop }};
+             color:{{ colors.home_background_eshop_font }};">
+                 <span class="" >{{ owner_panel_shop.home_title_2 }}</span>
              </a>
             <p class="col descr-home">
-                <strong>mały tekst w którym mozna dac krótki opis, napisz co chcesz!</strong>
+                <strong class="badge badge-pill w-20 p-3 badge-light"
+                style="background-color:{{ colors.home_background_eshop }};
+                color:{{ colors.home_background_eshop_font }};">
+                    {{ owner_panel_shop.home_dics }}
+                </strong>
             </p>
             <div class="row image-all">
-                {% if colors.home_background_img.url is not None %}
-                <img src="{{ colors.home_img_1.url }}" class="col-8 col-md-3 imgbottom-left">
-                <img src="{{ colors.home_img_2.url }}" class="col-8 col-md-3 imgbottom-middle">
-                <img src="{{ colors.home_img_3.url }}" class="col-8 col-md-3 imgbottom-right">
+                {% if owner_panel_shop.home_background_img.url is not None %}
+                <img src="{{ owner_panel_shop.home_img_1.url }}" class="col-8 col-md-3 imgbottom-left">
+                <img src="{{ owner_panel_shop.home_img_2.url }}" class="col-8 col-md-3 imgbottom-middle">
+                <img src="{{ owner_panel_shop.home_img_3.url }}" class="col-8 col-md-3 imgbottom-right">
                 {% else %}
                 <img src="" class="col-8 col-md-3 imgbottom-left">
                 <img src="" class="col-8 col-md-3 imgbottom-middle">
@@ -86,9 +102,11 @@
                href="{{ owner_panel_shop.get_regulatins_pdf }}"><small>Regulamin</small>
             </a>
         </div>
-        <a class="navbar-brand ml-auto mb-n4 mt-5" href="https://chriss.pythonanywhere.com/">
-            <p class="ml-n3 small mb-n2">Created by..</p>
-            <img class="image-logo" style="height: 2.5rem" src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
+        <a class="navbar-brand ml-auto mb-n4 mt-3" href="https://chriss.pythonanywhere.com/">
+            <p class="ml-n3 small mb-n1" style="color: {{ colors.home_font_link }};">Created by..</p>
+            <img class="image-logo badge-pill   badge-light"
+                 style="height: 2.5rem; background-color:#F6F6F6;"
+                 src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
         </a>
     </nav>
 <!-- JavaScript Bundle with Popper -->

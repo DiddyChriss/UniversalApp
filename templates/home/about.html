@@ -19,8 +19,10 @@
     <title>{{ owner_panel_shop.company_name }}</title>
 
 </head>
-{% if colors.home_background_img.url is not None %}
-    <body style="background-image: url({{ colors.home_background_img.url }}); color:{{ colors.home_font }};">
+{% if owner_panel_shop.home_background_img.url is not None %}
+    <body style="background-image: url({{ owner_panel_shop.home_background_img.url }});
+     background-repeat: no-repeat; background-size:100%; background-attachment: fixed;
+      background-size: cover; color:{{ colors.home_font }};">
 {% else %}
     <body style="color:{{ colors.home_font }};">
 {% endif %}
@@ -30,6 +32,7 @@
         </a>
         <button class="navbar-toggler btn-{{ colors.eshop_buttons_nav }}
                 btn-outline-{{ colors.eshop_buttons_font_nav }}"
+                style="background-color:{{ colors.home_background_eshop }};"
                 type="button" data-toggle="collapse" data-target="#navbarToggleExternalTopNice"
                 aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"  style="color:{{ colors.eshop_buttons_font_nav }};
@@ -44,7 +47,8 @@
                         <p>O Nas</p>
                     </a>
                     <a class="mx-3 mt-n4" style="color: {{ colors.home_font_link }};" href="/sklep/">
-                        <strong><p class="px-2 py-4" style="background-color:{{ colors.home_background_eshop }};">
+                        <strong><p class="px-2 py-4" style="background-color:{{ colors.home_background_eshop }};
+                                                            color:{{ colors.home_background_eshop_font }};">
                             E-SHOP
                         </p></strong>
                     </a>
@@ -61,18 +65,18 @@
         <h1 class="mt-5">{{ owner_panel_shop.about_title }}</h1>
         <h3>{{ owner_panel_shop.about_subtitle }}</h3>
         <p>{{ owner_panel_shop.about_textarea_1 }}</p>
-
     </div>
     <div class="row text-center mb-5 ">
-        {% if colors.about_img_1.url is not None %}
-            <img class="home-img-about col-12 col-md-5 badge-pill mb-5 mb-lg-0" src="{{ colors.about_img_1.url }}">
+        {% if owner_panel_shop.about_img_1.url is not None %}
+            <img class="home-img-about col-12 col-md-5 badge-pill mb-5 mb-lg-0"
+                 src="{{ owner_panel_shop.about_img_1.url }}">
         {% else %}
             <img class="home-img-about col-12 col-md-5 badge-pill mb-5 mb-lg-0" src="">
         {% endif %}
         <div class="col-12 col-md-7" style="background-color: {{ colors.about_background_con }};
                      color: {{ colors.about_background_con_font }}">
             <h4 class="mt-5">{{ owner_panel_shop.about_img_title_1 }}</h4>
-            <p class="">{{ owner_panel_shop.about_textarea_2 }}</p>
+            <p class="mb-3">{{ owner_panel_shop.about_textarea_2 }}</p>
         </div>
     </div>
     <div class="row text-center mb-5">
@@ -81,10 +85,11 @@
             <h4 class="mt-5">{{ owner_panel_shop.about_img_title_2 }}</h4>
             <p class="">{{ owner_panel_shop.about_textarea_3 }}</p>
         </div>
-        {% if colors.about_img_1.url is not None %}
-            <img class="home-img-about col-12 col-md-5 badge-pill mb-5 mb-lg-0" src="{{ colors.about_img_2.url }}">
+        {% if owner_panel_shop.about_img_1.url is not None %}
+            <img class="home-img-about col-12 col-md-5 badge-pill mt-4 mb-5 mb-lg-0"
+                 src="{{ owner_panel_shop.about_img_2.url }}">
         {% else %}
-            <img class="home-img-about col-12 col-md-5 badge-pill mb-5 mb-lg-0" src="">
+            <img class="home-img-about col-12 col-md-5 badge-pill mt-4 mb-5 mb-lg-0" src="">
         {% endif %}
     </div>
 </div>
@@ -98,9 +103,11 @@
                href="{{ owner_panel_shop.get_regulatins_pdf }}"><small>Regulamin</small>
             </a>
         </div>
-        <a class="navbar-brand ml-auto mt-2" href="https://chriss.pythonanywhere.com/">
-            <p class="ml-n3 small mb-n2">Created by..</p>
-            <img class="image-logo" style="height: 2.5rem" src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
+        <a class="navbar-brand ml-auto mb-n4 mt-4" href="https://chriss.pythonanywhere.com/">
+            <p class="ml-n3 small mb-n1" style="color: {{ colors.home_font_link }};">Created by..</p>
+            <img class="image-logo badge-pill   badge-light"
+                 style="height: 2.5rem; background-color:#F6F6F6;"
+                 src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
         </a>
     </nav>
 <!-- JavaScript Bundle with Popper -->
