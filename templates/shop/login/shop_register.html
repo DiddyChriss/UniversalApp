@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block productshop %}
-<div class="container col-12 col-md-7 col-lg-6">
+<div class="container col-12 col-md-7 col-lg-6" style="background-color:{{ colors.contact_con }};
+            color:{{ colors.contact_con_font }};">
     {% if messages %}
         {% for message in messages %}
             {% if 'error' in message.tags %}
@@ -40,13 +41,18 @@
 <!--            <span class="col-9">Powiadamiaj mnie o nowych ofertach</span>-->
 <!--        </div>-->
         <!-- Sign up button -->
-        <button class="btn btn-primary btn-lg btn-block" type="submit" name="register">Rejestracja</button>
+        <button class="btn btn-{{ colors.eshop_buttons_cont }}
+                            btn-outline-{{ colors.eshop_buttons_font_cont }}
+                             btn-lg btn-block" type="submit" name="register">
+            Rejestracja
+        </button>
     </form>
         <hr>
         <!-- Terms of service -->
         <p class="text-center">Klikając
             <em>Rejestracja</em> akceptujesz
-            <a href="https://www.ridelectric.pl/regulamin/" target="_blank">Regulamin ridelectric</a>
+            <a href="{{ owner_panel_shop.get_privacy_policy_pdf }}" target="_blank"
+               style="color:{{ colors.contact_con_font }};"><strong>Regulamin ridelectric</strong></a>
     <!-- Default form register -->
 </div>
 {% endblock %}

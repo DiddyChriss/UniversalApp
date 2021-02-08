@@ -363,9 +363,6 @@ class ShopLoginView(ShopGetView, ShopPostView, View):
 class ShopRegisterView(ShopGetView, ShopPostView, View):
     template_name = 'shop/login/shop_register.html'
 
-class ShopUserView(ShopGetView, ShopPostView, View):
-    template_name = 'shop/login/shop_user.html'
-
 class ShopLogoutView(ShopPostView, View):
     def get(self, request, pk=None, *args, **kwargs):
         logout(request)

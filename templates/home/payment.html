@@ -1,4 +1,4 @@
-
+{% load mptt_tags %}
 {% load static %}
 
 <!doctype html>
@@ -6,23 +6,25 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta property="og:image" content="https://chriss.pythonanywhere.com/static/img/carusel%20projects/rd.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <!-- Font Awesome -->
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-      <!-- Google Fonts Roboto -->
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-      <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{% static 'css2-shop/style.css' %}" type="text/css">
-    <title>ridelectric - shop</title>
-</head>
-<body>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"><!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+              crossorigin="anonymous">
+          <!-- Bootstrap core CSS -->
+        <title>{{ owner_panel_shop.company_name }} - shop</title>
+        <link rel="shortcut icon" href="{{ owner_panel_shop.get_logo }}">
+        <link type="text/css" rel="stylesheet" href="{% static 'css22/col.css' %}">
+  </head>
+<body style="background-color: #EDEDED;">
+<div class="col">
+
 <div class="container mt-5 mx-auto">
     <div class=" my-5 mx-auto">
         <p class="mt-3 text-center">
-            Dokonaj płatności na kwotę: {{ order.get_vat_price|floatformat:2 }} PLN, za pomocą jednej z ponizszych opcji:
+            Dokonaj płatności na kwotę: 2199 PLN (brutto), za pomocą jednej z ponizszych opcji:
         </p>
     </div>
 <div class="text-center" id="paypal-button-container"></div>
@@ -30,15 +32,12 @@
 
   <!----------------------- PAYPAL ----------------------------------------------------------------------------->
 
-
-
     <script src="https://www.paypal.com/sdk/js?client-id=AQ5b0MTz3qoqXRN6px3DW7Hc9oOZjOpL21rtaRFH5_d0g4McyE6mRE4gyvqpYjg6qkcXQgzvwqdx6oL5&currency=PLN"></script>
-
 
     <script src="https://www.paypal.com/sdk/js?client-id=-----------------------&currency=PLN"></script>
 
     <script>
-      var price = '{{ order.get_vat_price|floatformat:2 }}'
+      var price = '2199'
       paypal.Buttons({
         style: {
            layout:  'vertical',
@@ -60,7 +59,7 @@
           // This function captures the funds from the transaction.
           return actions.order.capture().then(function(details) {
             // This function shows a transaction success message to your buyer.
-            alert('Platność użytkownika ' + details.payer.name.given_name + ' powiodła się');
+            alert('Platność powiodła się');
             window.location.href = 'https://www.diddychriss.online/sklep/koszyk/zaplac/paypal/end';
             let con = 'confirmation of transaction - success!';
           });
@@ -69,4 +68,9 @@
       //This function displays Smart Payment Buttons on your web page.
     </script>
   <!----------------------- END PAYPAL ------------------------------------------------------->
+</div>
 </body>
+
+</html>
+
+

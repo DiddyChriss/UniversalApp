@@ -39,9 +39,13 @@ class OwnerPanelShop(models.Model):
     regulations_pdf = models.FileField(upload_to='owner_panel/', null=True, validators=[validate_pdf])
     privacy_policy_pdf = models.FileField(upload_to='owner_panel/', null=True, validators=[validate_pdf])
 
-    home_title = models.CharField(max_length=15, null=True)
-    home_title_2 = models.CharField(max_length=15, null=True)
-    home_dics = models.TextField(max_length=60, null=True)
+    social_media_link_facebook = models.CharField(max_length=100, null=False, default='None')
+    social_media_link_linkedin = models.CharField(max_length=100, null=False, default='None')
+    social_media_link_titter = models.CharField(max_length=100, null=False, default='None')
+    social_media_link_instagram = models.CharField(max_length=100, null=False, default='None')
+
+    home_title = models.CharField(max_length=18, null=True)
+    home_title_2 = models.CharField(max_length=20, null=True)
     home_background_img = models.FileField(upload_to='owner_panel/home/', null=True, validators=[validate_logo])
     home_img_1 = models.FileField(upload_to='owner_panel/home/', null=True, validators=[validate_logo])
     home_img_2 = models.FileField(upload_to='owner_panel/home/', null=True, validators=[validate_logo])
@@ -127,12 +131,16 @@ class Colors(models.Model):
     eshop_buttons_font_cont = models.CharField(max_length=10, choices=CLASES, default='light')
 
     home_font = ColorField(default='#030303')
-    home_font_link = ColorField(default='#0A0A0A')
     home_background_eshop = ColorField(default='#ACACAC')
     home_background_eshop_font = ColorField(default='#272526')
 
+    about_background = ColorField(default='#ECECEC')
+    about_background_font = ColorField(default='#010D1B')
     about_background_con = ColorField(default='#ECECEC')
-    about_backgound_con_font = ColorField(default='#0A0A0A')
+    about_background_con_font = ColorField(default='#0A0A0A')
+
+    contact_con = ColorField(default='#FDF2F7')
+    contact_con_font = ColorField(default='#000000')
 
     class Meta:
         verbose_name_plural = "3. Kolory"

@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block productshop %}
-<div class="container col-12 col-md-10 col-lg-6">
+<div class="container col-12 col-md-10 col-lg-6"  style="background-color:{{ colors.contact_con }};
+            color:{{ colors.contact_con_font }};">
     {% if messages %}
         {% for message in messages %}
             {% if 'info' in message.tags %}
@@ -30,15 +31,23 @@
         <div class="d-flex justify-content-around">
             <div>
                 <!-- Forgot password -->
-                <a href="/sklep/logowanie/resethasla">Zapomniałeś hasła?</a>
+                <a href="/sklep/logowanie/resethasla" style="color:{{ colors.contact_con_font }};">
+                    <strong>Zapomniałeś hasła?</strong>
+                </a>
             </div>
         </div>
         <!-- Sign in button -->
-        <button class="btn btn-info btn-block my-4" type="submit" name="login">Logowanie</button>
+        <button class="btn btn-{{ colors.eshop_buttons_cont }}
+                            btn-outline-{{ colors.eshop_buttons_font_cont }}
+                             btn-block my-4" type="submit" name="login">
+            Logowanie
+        </button>
 
         <!-- Register -->
-        <p class="text-center">Nie posiadasz konta?
-            <a href="/sklep/rejestracja/in/">Zarejestruj się</a>
+        <p class="text-center" >
+            Nie posiadasz konta?
+            <a href="/sklep/rejestracja/in/" style="color:{{ colors.contact_con_font }};">
+                <strong>Zarejestruj się</strong></a>
         </p>
     </form>
     <!-- Default form login -->

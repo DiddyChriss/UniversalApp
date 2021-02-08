@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block productshop %}
+<div class="container mx-auto col-11 col-md-9 col-lg-8 row alert shadow-lg mb-5 rounded"
+             style="background-color:{{ colors.eshop_container_products }};" role="alert">
   {% if not shop_products_cart_list %}
     <div class="container text-center">
       {% if messages %}
@@ -21,8 +23,10 @@
     <!--Grid column-->
     <div class="col-lg-8">
       <div class="container row">
-        <h5 class="ml-3 mt-1" style="color:{{ colors.eshop_font_container }};">
-          Koszyk (Produkty - <span>{{ shop_products_cart }}</span>)</h5>
+        <h5 class="ml-1 mb-3 px-3 py-2" style="background-color:{{ colors.eshop_container_products_elemnts }};
+                  color:{{ colors.eshop_font_container }};">
+          Koszyk (Produkty - <span>{{ shop_products_cart }}</span>)
+        </h5>
         <form class="form-inline mr-n3 ml-auto mt-n1 mb-2" action='.' method='POST'> {% csrf_token %}
           <button type="submit" class="btn btn-danger" name="delete_all_in_cart">
             Wyczyść Koszyk
@@ -56,7 +60,9 @@
             </div>
             <div class="col-7 col-md-8 ml-auto">
               <div class="col">
-                <h6 class="my-3 mb-2" style="color:{{ colors.eshop_font_container }};">{{ id.product.title_product }}</h6>
+                <h6 class="my-3 mb-2" style="color:{{ colors.eshop_font_container }};">
+                  {{ id.product.title_product }}
+                </h6>
               </div>
               <div class="col">
                 <ins>
@@ -173,4 +179,5 @@
 </section>
 <!--Section: Block Content-->
 {% endif %}
+</div>
 {% endblock %}

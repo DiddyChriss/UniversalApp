@@ -98,3 +98,10 @@ class ContactView(ShopGetView, View):
             'category': category,
         }
         return render(self.request, 'shop/shop_search.html', context)
+
+class PresView(ShopGetView, View):
+        template_name = 'home/presentation.html'
+
+
+class PayView(ShopGetView, View):
+    template_name = 'home/payment.html'

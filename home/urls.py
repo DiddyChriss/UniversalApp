@@ -11,5 +11,7 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('kontakt/', ContactView.as_view(), name='contact'),
     path('onas/', AboutView.as_view(), name='about'),
+    path('pres/', PresView.as_view(), name='pres'),
+    path('zaplac/', PayView.as_view(), name='pay'),
 
 ]

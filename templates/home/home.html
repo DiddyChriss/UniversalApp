@@ -16,15 +16,22 @@
               integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
               crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="{% static 'css22/clases.css' %}">
+
+
+
+    <link type="text/css" rel="stylesheet" href="{% static 'css22/bootstrapos.css' %}">
+
+
+
     <title>{{ owner_panel_shop.company_name }}</title>
 
 </head>
 {% if owner_panel_shop.home_background_img.url is not None %}
     <body style="background-image: url({{ owner_panel_shop.home_background_img.url }});
-     background-repeat: no-repeat; background-size:100%; background-attachment: fixed;
+     background-repeat: no-repeat; background-size:100%;
       background-size: cover; color:{{ colors.home_font }};">
 {% else %}
-    <body style="color:{{ colors.home_font }};">
+    <body style="background-color:{{ colors.home_font }};">
 {% endif %}
     <nav class="navbar navbar-light mt-n2 navbar-expand-md ">
         <a class="navbar-brand ml-4" href="/">
@@ -32,53 +39,44 @@
         </a>
         <button class="navbar-toggler btn-{{ colors.eshop_buttons_nav }}
                 btn-outline-{{ colors.eshop_buttons_font_nav }}"
-                style="background-color:{{ colors.home_background_eshop }};"
+                style="background-color:{{ colors.home_background_eshop }}; opacity: 0.8;"
                 type="button" data-toggle="collapse" data-target="#navbarToggleExternalTopNice"
                 aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"  style="color:{{ colors.eshop_buttons_font_nav }};
                                background-colors:{{ colors.eshop_buttons_nav }};"></i>
         </button>
             <div class="collapse navbar-collapse nav nav-pills " id="navbarToggleExternalTopNice">
-                <div class="row ml-auto mt-5">
-                    <a class="ml-md-n1 mx-3" style="color: {{ colors.home_font_link }};" href="/">
-                        <p>Home</p>
+                <div class="row ml-md-auto mt-4">
+                    <a class="ml-md-n1 mx-3" style="color: {{ colors.home_font }};" href="/">
+                        <strong><p>Home</p></strong>
                     </a>
-                    <a class="mx-3" style="color: {{ colors.home_font_link }};" href="/onas/">
-                        <p>O Nas</p>
+                    <a class="mx-3" style="color: {{ colors.home_font }};" href="/onas/">
+                        <strong><p>O Nas</p></strong>
                     </a>
-                    <a class="mx-3 mt-n4" style="color: {{ colors.home_font_link }};" href="/sklep/">
+                    <a class="mx-3 mt-n4" style="color: {{ colors.home_font }}; opacity: 0.8;" href="/sklep/">
                         <strong><p class="px-2 py-4" style="background-color:{{ colors.home_background_eshop }};
                                                             color:{{ colors.home_background_eshop_font }};">
                             E-SHOP
                         </p></strong>
                     </a>
-                    <a class="mr-md-5 mx-3" style="color: {{ colors.home_font_link }};" href="/kontakt/">
-                        <p>Kontakt</p>
+                    <a class="mr-md-5 mx-3" style="color: {{ colors.home_font }};" href="/kontakt/">
+                        <strong><p>Kontakt</p></strong>
                     </a>
                 </div>
             </div>
     </nav>
     <div class="container">
         <div class="col margin-container-img">
-            <h1 class="col title-home">
-                <strong class="badge badge-pill w-20 p-3 badge-light"
-                        style="background-color:{{ colors.home_background_eshop }};
-                                color:{{ colors.home_background_eshop_font }};">
-                {{ owner_panel_shop.home_title|upper }}
-                </strong>
+            <h1 class="col-md-4 title-home p-3 badge-pill shadow-lg"
+                style="background-color:{{ colors.home_background_eshop }};
+                                color:{{ colors.home_background_eshop_font }}; opacity: 0.9;">
+                <strong class="text-center badge-pill shadow-lg">{{ owner_panel_shop.home_title }}</strong>
             </h1>
-             <a class="col-md-5 link-home col-lg-3 badge badge-pill w-23 p-3 badge-light" href="/sklep"
+             <a class="col-md-3 link-home btn btn-primary" href="/pres"
              style="background-color:{{ colors.home_background_eshop }};
-             color:{{ colors.home_background_eshop_font }};">
+             color:{{ colors.home_background_eshop_font }}; opacity: 0.8;">
                  <span class="" >{{ owner_panel_shop.home_title_2 }}</span>
              </a>
-            <p class="col descr-home">
-                <strong class="badge badge-pill w-20 p-3 badge-light"
-                style="background-color:{{ colors.home_background_eshop }};
-                color:{{ colors.home_background_eshop_font }};">
-                    {{ owner_panel_shop.home_dics }}
-                </strong>
-            </p>
             <div class="row image-all">
                 {% if owner_panel_shop.home_background_img.url is not None %}
                 <img src="{{ owner_panel_shop.home_img_1.url }}" class="col-8 col-md-3 imgbottom-left">
@@ -92,19 +90,46 @@
             </div>
         </div>
     </div>
-
     <nav class="navbar navbar-light bottom mt-n3 mb-n3 navbar-expand-md">
-        <div class="row mt-n5 mt-lg-1 ml-lg-2 mb-n4">
-            <a class="alert-link col-sm-6" style="color: {{ colors.home_font_link }};"
-                href="{{ owner_panel_shop.get_privacy_policy_pdf }}"><small>Polityka Prywatności</small>
-            </a>
-            <a class="alert-link col-sm-6 mt-2" style="color: {{ colors.home_font_link }};"
-               href="{{ owner_panel_shop.get_regulatins_pdf }}"><small>Regulamin</small>
-            </a>
+        <div class="col-md-4 mb-n5">
+            <div class="row text-left mb-md-2">
+                <a class="alert-link col-12 col-md-6 ml-md-1 mr-md-n5" style="color: {{ colors.home_font }};"
+                   href="{{ owner_panel_shop.get_regulatins_pdf }}"><small>Regulamin</small>
+                </a>
+                <a class="alert-link col-12 col-md-6 ml-md-n5" style="color: {{ colors.home_font }};"
+                    href="{{ owner_panel_shop.get_privacy_policy_pdf }}"><small>Polityka Prywatności</small>
+                </a>
+            </div>
+            <div class="text-left mb-md-4" style="color:{{ colors.contact_con_font }};">
+                {% if owner_panel_shop.social_media_link_linkedin != 'None' %}
+                <a href="{{ owner_panel_shop.social_media_link_linkedin }}" class="mx-1"
+                   style="color:{{ colors.home_font }};" title="Linkedin">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                {% endif %}
+                {% if owner_panel_shop.social_media_link_instagram != 'None' %}
+                <a href="{{ owner_panel_shop.social_media_link_instagram }}" class="mx-1"
+                   style="color:{{ colors.home_font }};" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                {% endif %}
+                {% if owner_panel_shop.social_media_link_facebook != 'None' %}
+                <a href="{{ owner_panel_shop.social_media_link_facebook }}" class="mx-1"
+                   style="color:{{ colors.home_font }};" title="Facebook">
+                    <i class="fab fa-facebook-square" style="size: 7x;"></i>
+                </a>
+                {% endif %}
+                {% if owner_panel_shop.social_media_link_titter != 'None' %}
+                <a href="{{ owner_panel_shop.social_media_link_titter }}" class="mx-1"
+                   style="color:{{ colors.home_font }};" title="Twitter">
+                    <i class="fab fa-twitter-square"></i>
+                </a>
+                {% endif %}
+            </div>
         </div>
         <a class="navbar-brand ml-auto mb-n4 mt-3" href="https://chriss.pythonanywhere.com/">
-            <p class="ml-n3 small mb-n1" style="color: {{ colors.home_font_link }};">Created by..</p>
-            <img class="image-logo badge-pill   badge-light"
+            <p class="ml-n3 small mb-n1" style="color: {{ colors.home_font }};">Created by..</p>
+            <img class="image-logo badge-pill badge-light"
                  style="height: 2.5rem; background-color:#F6F6F6;"
                  src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
         </a>

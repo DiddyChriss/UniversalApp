@@ -1,0 +1,225 @@
+{% load mptt_tags %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta property="og:image" content="https://chriss.pythonanywhere.com/static/img/carusel%20projects/rd.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"><!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+              crossorigin="anonymous">
+          <!-- Bootstrap core CSS -->
+        <title>UniversalShop</title>
+        <link rel="shortcut icon" href="{{ owner_panel_shop.get_logo }}">
+        <link type="text/css" rel="stylesheet" href="{% static 'css22/col.css' %}">
+  </head>
+<body style="background-color: #EDEDED;">
+<div class="col">
+    <div class="container col-11 mx-auto text-center mt-4 shadow-lg badge-pill pt-4 pb-5"
+         style="background-color: #F4F4F4;">
+        <h2 class="my-3">UniversalShop</h2>
+        <h4 class="my-2">Wygodny w obsłudze oraz bardzo intuicyjny w użytkowaniu przez klienta...</h4>
+        <p class="pb-3">Zastanawiasz się nad otwarciem sklepu internetowego? Jednak masz wątpliwości czy serwowane
+            w sklepie produkty osiągną oczekiwaną sprzedaż... Czy opłaca się inwestować w sklep o
+            danym charakterze sprzedaży... a jeżeli okaże się, że produkty o innym charakterze będą dla Twojej firmy dużo
+        bardziej owocne w sprzedaży..</p>
+    </div>
+    <div class="row mx-auto my-4 shadow-lg badge-pill" style="background-color: #F4F4F4;">
+        <div class="col-10 text-center mx-auto mt-5 mb-3 badge-pill">
+            <h2>Sekcja Shop</h2>
+        </div>
+        <div class="col-12 col-md-7 mx-auto text-center my-2 my-md-5 badge-pill">
+            <a href="{% static 'img/prez/shop/UniversalAppShop.png' %}">
+                <img src="{% static 'img/prez/shop/UniversalAppShop.png' %}"
+                     class="col-12">
+            </a>
+        </div>
+        <div class="col-12 col-md-5 mx-auto my-auto text-center my-3 my-md-auto badge-pill ">
+            <h4 class="mt-3">UniversalShop Rozwiazaniem!</h4>
+            <p>Teraz dzięki UniversalShop możesz w dowolnej chwili zmienić charakter sklepu! Nie potrzebujesz
+        do tego Developera! Wystarczy nowy pomysł i dopasowanie kolorystiki elementów, czcionek, tła oraz załadowanie
+        w panelu administracyjnym nowych zdjęć. Utworzenie nowych kategorii oraz produktów!</p>
+            <hr class="mb-2">
+        </div>
+
+        <div class="col-12 col-md-5 mx-auto text-center my-2 my-md-auto badge-pill ml-5 mr-n4">
+            <h4>Pełny zakres modyfikacji we własnych rękach</h4>
+            <p>Zmiana Logo, danych firmy w opisie wszystko to zrobisz sam/a(lub z naszą asystą)! Dobierając
+                kombinację, według własnego pomysłu. Kiedy chcesz, oraz w jak tylko chcesz, w błyskawicznym tempie.
+                Sklep z ubraniami czy z elektroniką - UniwersalShop dostosuje się do Twoich potrzeb, abyś mógł/mogła
+                sprzedawać i zarabiać nie martwiąc się czy kończy się okres dobrego popyty na Twoje produkty!
+            </p>
+            <hr class="mb-2">
+        </div>
+        <div class="col-12 col-md-7 mx-auto text-center my-2 my-md-5 badge-pill">
+            <a href="{% static 'img/prez/shop/ClothWorldShop.png' %}">
+                <img src="{% static 'img/prez/shop/ClothWorldShop.png' %}" class="col-12">
+            </a>
+        </div>
+        <div class="col-12 col-md-7 mx-auto text-center my-2 my-md-5 badge-pill">
+            <a href="{% static 'img/prez/shop/ridelectricShop.png' %}">
+                <img src="{% static 'img/prez/shop/ridelectricShop.png' %}" class="col-12">
+            </a>
+        </div>
+        <hr class="mb-2">
+        <div class="col-12 col-md-5 mx-auto text-center my-2 my-md-auto badge-pill">
+            <h4>W momencie zakupu stajesz się właścicielem/właścicielką</h4>
+                <p>
+                    Stajesz się właścicielem/właścicielką kodu źródłowego - sklep należy do Ciebie. Możesz go
+                    modyfikować dowolnie we własnym zakresie, bez konieczności korzystania z naszych aktualizacji.
+                    W celu indywidualnej rozbudowy sklepu w pożądanym kierunku możesz zatrudnić zarówno Nas jak i
+                    również innego developera, jeśli tylko zechcesz..
+                </p>
+            <hr class="mb-2">
+        </div>
+        <div class="col-10 text-center mx-auto mt-2 mt-md-4 mb-3 badge-pill ">
+            <hr class="mb-2">
+            <hr class="mb-2">
+            <h2>Sekcja Home</h2>
+        </div>
+        <div class="col-12 col-md-7 mx-auto text-center my-2 my-md-5 badge-pill">
+            <a href="{% static 'img/prez/home/UniversalAppHome.png' %}">
+                <img src="{% static 'img/prez/home/UniversalAppHome.png' %}" class="col-12">
+            </a>
+        </div>
+        <div class="col-12 col-md-5 mx-auto text-center my-2 my-md-auto badge-pill ">
+            <h4>Wspieramy Cię od samego poczatku</h4>
+            <p>Po zakupie przez Ciebie sklepu zajmujemy się wszystkim co potrzeba abyś mógł/mogła skutecznie uruchomić
+                i zarządzać sklepem. Konfigurujemy Twoją domenę, umieszczamy w sklepie wszystkie potrzebne dane
+                dotyczące płatności i Twoich kont w systemach płatniczych. Jeśli nie posiadasz domeny ani kont w
+                systemach płatniczych, skutecznie asystujemy abyś mógł/mogła szybko i sprawie przejść przez ten cały
+                proces i rozpocząć sprzedaż. Na tym nie koniec! Systematycznie aktualizujemy sklep, dzięki czemu
+                podnosi się poziom jakości oraz <funkcjonalności></funkcjonalności> UniversalShop - wszystko w cenie!</p>
+            <hr class="mb-2">
+        </div>
+        <hr class="mb-2">
+        <div class="col-12 mx-auto col-md-5 text-center my-2 my-md-auto badge-pill ml-5 mr-n4">
+            <h4>Zyskujesz naszą opiekę na co najmniej rok!</h4>
+            <p>W cenie otrzymujesz Nasze wsparcie przez cały rok, wspieramy Cię nie tylko w trakcie startu sklepu,
+                ale również, gdyby pojawiły się trudności z oprogramowaniem lub awarie, jesteśmy po to by natychmiast
+                reagować, abyś mógł/mogła skutecznie kontynuować sprzedaż. Jeżeli będziesz chciał/a abyśmy pozostali do
+                Twojej dyspozycji dłużej, przedłużymy na Twoje życzenie opiekę na dogodnych dla Ciebie warunkach</p>
+            <hr class="mb-2">
+        </div>
+        <div class="col-12 col-md-7 mx-auto text-center my-2 my-md-5 badge-pill">
+            <a href="{% static 'img/prez/home/ClothWorldHome.png' %}">
+                <img src="{% static 'img/prez/home/ClothWorldHome.png' %}" class="col-12">
+            </a>
+        </div>
+        <hr class="mb-2">
+        <div class="col-12 col-md-7 mx-auto text-center my-2 my-md-5 badge-pill">
+            <a href="{% static 'img/prez/home/ridelectricHome.png' %}">
+                <img src="{% static 'img/prez/home/ridelectricHome.png' %}" class="col-12">
+            </a>
+        </div>
+        <div class="col-12 col-md-5 mx-auto text-center my-2 my-md-auto badge-pill">
+            <h4>Roczny Hosting w cenie</h4>
+            <p>W cenie zakupu otrzymujesz również roczny Hosting, który po wygaśnięciu możesz przedłużyć w atrakcyjnej
+                cenie, możesz też przenieść swój sklep na inny Hosting - wszystko zależy od Ciebie!</p>
+            <hr class="mb-2">
+        </div>
+        <div class="col-10 text-center mx-auto mt-2 mt-md-4-5 mb-3 badge-pill">
+            <hr class="mb-2">
+            <hr class="mb-2">
+            <h2>Sekcja Admin</h2>
+        </div>
+        <div class="col-12 col-md-7 mx-auto text-center my-2 my-md-5 badge-pill">
+            <a href="{% static 'img/prez/admin/admin.png' %}">
+                <img src="{% static 'img/prez/admin/admin.png' %}" class="col-12">
+            </a>
+        </div>
+        <div class="col-12 col-md-5 mx-auto text-center my-2 my-md-auto badge-pill">
+            <h4>Prosty i przejrzysty Panel Administracyjny</h4>
+            <p>Nasz zespół wsparcia wprowadzi Cię krok po kroku skutecznie w obsługę panelu administracyjnego
+            dzięki czemu sam będziesz mógł/mogła zarządzać swoim sklepem. Obsługa jest prosta oraz intuicyjna, krok
+            po kroku zostaniesz wprowadzony/a dzięki jasnej i wygodnej instrukcji wraz z legendą opisująca wszystkie
+                elementy. Będziesz miał/a kontrole na klientami oraz infrastrukturą sklepu</p>
+            <hr class="mb-2">
+        </div>
+        <hr class="mb-2">
+        <div class="col-12 col-md-5 mx-auto text-center my-2 my-md-auto badge-pill ml-5 mr-n4">
+            <h4>Dobierz własną kompilacje kolorów</h4>
+            <p>Strona Home, O Nas, Kontakt czy Strona Sklepu - każda z tych aplikacji sklepu posiada możliwość
+                dostosowania kolorystyki do własnych potrzeb i według własnej wizji. Dzięki temu możesz dostosować
+                kolorystykę pod dany charakter sklepu, na obrazkach powyżej świetnie widać tę kompilację,
+                na przykład dla sklepu z ubraniami czy inną dla sklepu z elementami EV oraz PV...</p>
+            <hr class="mb-2">
+        </div>
+        <div class="col-12 col-md-7 mx-auto text-center my-2 my-md-5 badge-pill">
+            <a href="{% static 'img/prez/admin/admin-kolor.png' %}">
+                <img src="{% static 'img/prez/admin/admin-kolor.png' %}" class="col-12">
+            </a>
+        </div>
+        <hr class="mb-2">
+        <div class="col-12 col-md-7 mx-auto text-center my-2 my-md-5 badge-pill">
+            <a href="{% static 'img/prez/admin/admin-owner.png' %}">
+                <img src="{% static 'img/prez/admin/admin-owner.png' %}" class="col-12">
+            </a>
+        </div>
+        <div class="col-12 col-md-5 mx-auto text-center my-2 my-md-auto badge-pill">
+            <h4>Edytuj dane firmy, kontaktowe, tło, zdjęcia oraz innych elementów</h4>
+            <p>UniversalShop pozwala na dostosowanie tła oraz obrazków, na przykład strony Home do własnych potrzeb
+                według własnego uznania. Dane Twojej firmy widoczne na stronie mogą być w dowolny sposób modyfikowane,
+                 tak samo jak treść poszczególnych elementów. Sam zadecydujesz jaka będzie treść elementów strony,
+                na przykład zakładki O NAS. Sam Stworzysz kategorie sklepu czy produkty wraz z ich treścią
+                oraz załączonymi zdjeciami.
+            </p>
+            <hr class="mb-2">
+        </div>
+        <hr class="mb-2">
+        <div class="container col-11 mx-auto text-center pt-4 mt-2 mt-md-4  badge-pill pt-3 pb-5" style="background-color: #F4F4F4;">
+            <h2 class="my-3">Jesteś gotowy na UniversalShop!</h2>
+             <p class="pb-3">Aplikacja Internetowa UniversalShop zapewnia Ci wszystko czego potrzebujesz, to właśnie
+            możliwość modyfikacji strony WE WŁASNYM zakresie w dowolnej chwili sprawa, że jest to oferta tak wyjątkowa.
+                Teraz już nie musisz się obawiać ewentualnego przebranżownienia., Świat się zmienia, jeśli chcesz odnieść
+                sukces, czesto musisz być elastyczny/a i gotowy/a na zmiany. Dlatego już dzisiaj dokonaj zakupu aby
+                skorzystać z promocyjnej ceny lub <strong><a href="/kontakt/">NAPISZ</a></strong> jeśli masz do Nas
+                pytania</p>
+            <hr class="mb-2">
+            <h4>Skorzystaj z wyjątkowej ceny pormocyjnej! Tylko teraz <strong style="color: red;">2 199 zł</strong>
+                (brutto) !</h4>
+        </div>
+        <div class="col-10 text-center mx-auto mt-1 mt-md-3 badge-pill">
+            <a href="/kontakt/" >
+                <h5 class="my-3 ">Masz Pytania odnośnie sklepu, modyfikacji - a może chciałbyś abyśmy stworzyli dla
+                    Ciebie indywidualny PROJEKT?! przejdź do <i>Formularza Kontaktowego</i> lub
+                    napisz DiddyChriss@gmail.com</h5>
+            </a>
+            <a href="https://www.diddychriss.online/">
+                <h4 class="my-4">Link do Sklepu Pokazowego</h4>
+            </a>
+            <h5>Kup Teraz aby w ciągu 24 godzin mieć dostęp do swojego sklepu! Kliknij w przycisk poniżej i
+                zaoszczędź dzięki promocji!</h5>
+            <a href="/zaplac/">
+                <h3 class="btn btn-primary my-3">Kup Teraz!</h3>
+            </a>
+        </div>
+        <div class="col-10 mb-5 mx-auto">
+            <a class="" href="https://chriss.pythonanywhere.com/">
+            <p class="ml-n3 small mb-n1" style="color: black;">Created by..</p>
+            <img class="image-logo badge-pill badge-light"
+                 style="height: 2.5rem; background-color:#F6F6F6;"
+                 src="{% static 'img/logo Diddychriss.png' %}" alt="Logo"></a>
+        </div>
+
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+

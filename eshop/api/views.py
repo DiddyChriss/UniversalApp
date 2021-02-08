@@ -56,7 +56,7 @@ class ShoppingaddressAPIView(viewsets.ModelViewSet):
         serializer = self.get_serializer(instance, data=request.data)
         if serializer.is_valid():
             self.perform_update(serializer)
-            messages.error(request, 'Dane użytkownika zostały zmienione', extra_tags="error")
+            messages.error(request, 'Dane użytkownika zostały zaktualizowane', extra_tags="error")
             return HttpResponseRedirect('/sklep/api/{}/'.format(pk))
         messages.error(request, 'Aby zapisać zmiany wypełnij wszystkie pola oznaczone sybolem "*"', extra_tags="error")
         return HttpResponseRedirect('/sklep/api/{}/'.format(pk))

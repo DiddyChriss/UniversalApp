@@ -24,10 +24,11 @@
                  <a class="navbar-brand mr-auto" href="/">
                     <img class="image-logo" style="height: 4rem" src="{{ owner_panel_shop.get_logo }}" alt="Logo">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarToggleExternalContent" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler btn-{{ colors.eshop_buttons_nav }}
+                    btn-outline-{{ colors.eshop_buttons_font_nav }}" type="button" data-toggle="collapse"
+                    data-target="#navbarToggleExternalContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse nav nav-pills "
                      id="navbarToggleExternalContent">
@@ -90,10 +91,12 @@
                  style="background-color:{{ colors.eshop_navbar_left }};" role="alert">
                 <!-- Mobile/nevbar -->
                 <nav class="navbar navbar-expand-md ">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navnavbarToggleExternalContent" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                    <button class="navbar-toggler btn-{{ colors.eshop_buttons_nav }}
+                            btn-outline-{{ colors.eshop_buttons_font_nav }}"
+                            style="background-color:{{ colors.home_background_eshop }}; opacity: 0.8;"
+                            type="button" data-toggle="collapse" data-target="#navnavbarToggleExternalContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"  style="background-colors:{{ colors.eshop_buttons_nav }};"></i>
                     </button>
                     <div class="collapse navbar-collapse nav nav-pills flex-column" id="navnavbarToggleExternalContent">
                         <a class="mt-3 font-weight-bold" style="color:{{ colors.eshop_font_nav_left }};"
@@ -117,51 +120,78 @@
         <img class="image-logo" style="height: 4rem" src="{{ owner_panel_shop.get_logo }}" alt="Logo">
     </a>
     <div class="alert col-12 col-md-3 mb-n1"
-         style="background-color:{{ colors.eshop_container_products }};"
+         style="background-color:{{ colors.eshop_navbar_left }};"
          role="alert">
         <a href="{{ owner_panel_shop.get_regulatins_pdf }}"
-           class="alert-link" style="color:{{ colors.eshop_font_container }};"><p>Regulamin</p></a>
+           class="alert-link" style="color:{{ colors.eshop_font_nav_left }};"><p>Regulamin</p></a>
         <a href="{{ owner_panel_shop.get_privacy_policy_pdf }}"
-           class="alert-link" style="color:{{ colors.eshop_font_container }};"><p>Polityka Prywatności</p></a>
-        <a href="https://www.facebook.com/ridelectricKRK/"
-           class="alert-link" style="color:{{ colors.eshop_font_container }};"><p>Facebook: @ridelectricKRK</p></a>
+           class="alert-link" style="color:{{ colors.eshop_font_nav_left }};"><p>Polityka Prywatności</p></a>
+        <div class="row">
+            <strong><p class="ml-3" style="color:{{ colors.eshop_font_nav_left }};">Social Media:</p></strong>
+            <div class="ml-2 row mt-1">
+                {% if owner_panel_shop.social_media_link_linkedin != 'None' %}
+                <a href="{{ owner_panel_shop.social_media_link_linkedin }}" class="mx-1"
+                   style="color:{{ colors.eshop_font_nav_left }};" title="Linkedin">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                {% endif %}
+                {% if owner_panel_shop.social_media_link_instagram != 'None' %}
+                <a href="{{ owner_panel_shop.social_media_link_instagram }}" class="mx-1"
+                   style="color:{{ colors.eshop_font_nav_left }};" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                {% endif %}
+                {% if owner_panel_shop.social_media_link_facebook != 'None' %}
+                <a href="{{ owner_panel_shop.social_media_link_facebook }}" class="mx-1"
+                   style="color:{{ colors.eshop_font_nav_left }};" title="Facebook">
+                    <i class="fab fa-facebook-square" style="size: 7x;"></i>
+                </a>
+                {% endif %}
+                {% if owner_panel_shop.social_media_link_titter != 'None' %}
+                <a href="{{ owner_panel_shop.social_media_link_titter }}" class="mx-1"
+                   style="color:{{ colors.eshop_font_nav_left }};" title="Twitter">
+                    <i class="fab fa-twitter-square"></i>
+                </a>
+                {% endif %}
+            </div>
+        </div>
     </div>
     <div class="alert col-12 col-md-5 mx-auto mb-n1"
-         style="background-color:{{ colors.eshop_container_products }}; color:{{ colors.eshop_font_container }};"
+         style="background-color:{{ colors.eshop_navbar_left }};"
          role="alert">
         <div class="row">
             <div class="col-6">
-                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_container }};">
+                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_nav_left }};">
                     <p class="text-center">Kontakt:</p>
                 </a>
-                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_container }};">
+                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_nav_left }};">
                     <h5 class="text-center">{{ owner_panel_shop.company_name }}</h5>
                 </a>
             </div>
-            <div class="col-6">
-                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_container }};">
-                    <p class="font-weight-normal my-1">
+            <div class="col-6 ml-n4">
+                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_nav_left }};">
+                    <p class="font-weight-normal">
                         {{ owner_panel_shop.street }}
                         {{ owner_panel_shop.street_number }},
                         {{ owner_panel_shop.zipcode }}
                         {{ owner_panel_shop.city }}
                     </p>
                 </a>
-                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_container }};">
+                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_nav_left }};">
                     <p class="font-weight-normal my-1">{{ owner_panel_shop.state }}</p>
                 </a>
-                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_container }};">
+                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_nav_left }};">
                     <p class="font-weight-normal my-1">{{ owner_panel_shop.email }}</p>
                 </a>
-                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_container }};">
+                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_nav_left }};">
                     <p class="font-weight-normal my-1">{{ owner_panel_shop.phone_number }}</p>
                 </a>
             </div>
         </div>
     </div>
     <a class="navbar-brand ml-auto mt-2" href="https://chriss.pythonanywhere.com/">
-        <p class="ml-n3 small mb-n2" >Created by..</p>
-        <img class="image-logo" style="height: 2.5rem" src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
+        <p class="ml-n3 small mb-n1" >Created by..</p>
+        <img class="image-logo badge-pill badge-light" style="height: 2.5rem" src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
     </a>
 </nav>
 

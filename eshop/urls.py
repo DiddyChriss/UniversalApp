@@ -9,7 +9,7 @@ from .views import *
 app_name = 'eshop'
 urlpatterns = [
     path('sklep/', ShopAllListView.as_view(), name='sklep'),
-    path('sklep/<str:slug>/', ShopAllListView.as_view(template_name='shop/shop_cat.html'), name='sklep_EV_1'),
+    path('Sklep/<str:slug>/', ShopAllListView.as_view(template_name='shop/shop_cat.html'), name='sklep_EV_1'),
     path('sklep/produkty/<int:pk>/', ShopProductDetailView.as_view(), name='product'),
     path('sklep/koszyk/produkty/', ShopCartView.as_view(), name='cart'),
     path('sklep/koszyk/produkty/<int:pk>/', ShopCartViewDetail.as_view(), name='cart_delete'),
@@ -18,7 +18,6 @@ urlpatterns = [
     path('sklep/koszyk/zaplac/paypal/end/', ShopPayPalEndView.as_view(), name='paypalend'),
     path('sklep/logowanie/in/', ShopLoginView.as_view(), name='login'),
     path('sklep/rejestracja/in/', ShopRegisterView.as_view(), name='register'),
-    path('sklep/user/', ShopUserView.as_view(), name='user'),
     path('sklep/wyloguj/out/', ShopLogoutView.as_view(), name='logoff'),
     path('sklep/logowanie/resethasla/',
                                        auth_views.PasswordResetView.as_view(

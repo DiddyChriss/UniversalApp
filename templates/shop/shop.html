@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block productshop %}
-
+<div class="container mx-auto col-11 col-md-9 col-lg-8 row alert shadow-lg mb-5 rounded"
+             style="background-color:{{ colors.eshop_container_products }};" role="alert">
 {%  for id in shop_products %}
         <a href="{{ id.get_absolute_url }}">
             <div class="card col-11 col-md-5 col-lg-5 shadow p-2 mx-auto my-4 rounded"
@@ -26,6 +27,6 @@
             </div>
         </a>
 {% endfor %}
-
+</div>
 {% endblock %}
 

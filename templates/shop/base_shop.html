@@ -38,7 +38,7 @@
                     btn-outline-{{ colors.eshop_buttons_font_nav }}" type="button" data-toggle="collapse"
                     data-target="#navbarToggleExternalTop" aria-expanded="false"
                     aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars btn-{{ colors.eshop_buttons_nav }}"></i>
             </button>
             <div class="collapse navbar-collapse nav nav-pills " id="navbarToggleExternalTop">
                 <a class="mr-auto badge badge-pill w-25 p-3 badge-light mt-2 mx-md-auto" href="/sklep">
@@ -48,8 +48,9 @@
                     {% if user.is_authenticated %}
                         <span style="color:{{ colors.eshop_font_nav }};">
                             Witaj
-                            <a style="color:{{ colors.eshop_font_nav }};" href="/sklep/api/{{ shopping_address_pk }}">
-                                {{ user|upper }}
+                            <a style="color:{{ colors.eshop_font_nav }};" title="Ustawienia"
+                               href="/sklep/api/{{ shopping_address_pk }}">
+                                {{ user|upper }} <i class="fas fa-user-cog"></i>
                             </a>
                         </span>
                         <a href="/sklep/wyloguj/out/">
@@ -111,7 +112,7 @@
             <div class="alert shadow-sm p-2 rounded shadow-lg"
                  style="background-color:{{ colors.eshop_navbar_left }};" role="alert">
                 <!-- Mobile/nevbar -->
-                <nav class="navbar navbar-expand-md navbar-light  mb-5">
+                <nav class="navbar navbar-expand-md navbar-light ml-2 mb-5">
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarToggleExternalContent" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -120,19 +121,23 @@
                         {% recursetree category %}
                         <div class="collapse navbar-collapse nav nav-pills flex-column"
                              id="navbarToggleExternalContent">
-                            <a class="nevbar mx-n4 my-2 font-weight-bold"
-                               style="color:{{ colors.eshop_font_nav_left }};" href="/sklep/{{ node.name }}">
-                                {{ node.name|title }}
+                            <a class="nevbar ml-n5 my-3 font-weight-bold"
+                               style="color:{{ colors.eshop_font_nav_left }};" href="/Sklep/{{ node.name }}">
+                               {{ node.name|upper }}
                             </a>
-                            <nav class="nav nav-pills mx-n2 flex-column"
+                            <nav class="nav nav-pills flex-column"
                                  style="color:{{ colors.eshop_font_nav_left }};">
-                                <li>
                                 {% if not node.is_leaf_node %}
-                                    <ul class="ml-n4 my-2">
-                                        <small>{{ children }}</small>
+                                    {% if not node.is_child_node  %}
+                                    <ul class="ml-n4 my-n2">
+                                        {{ children|title }}
                                     </ul>
+                                    {% elif node.is_child_node %}
+                                    <ul>
+                                        <i><small>{{ children }}</small></i>
+                                    </ul>
+                                    {% endif %}
                                 {% endif %}
-                                </li>
                             </nav>
                         {% endrecursetree %}
                         </div>
@@ -141,12 +146,9 @@
             </div>
         </div>
             <!-- container products -->
-        <div class="container mx-auto col-11 col-md-9 col-lg-8 row alert shadow-lg mb-5 rounded"
-             style="background-color:{{ colors.eshop_container_products }};" role="alert">
         {% block productshop %}
 
         {% endblock %}
-        </div>
         <!-- comtainer with products -->
         <div class="container col-11 col-md-10 col-lg-2 ">
             <!-- comerc2 -->
@@ -161,29 +163,57 @@
         <img class="image-logo" style="height: 4rem" src="{{ owner_panel_shop.get_logo }}" alt="Logo">
     </a>
     <div class="alert col-12 col-md-3 mb-n1"
-         style="background-color:{{ colors.eshop_container_products }};"
+         style="background-color:{{ colors.eshop_navbar_left }};"
          role="alert">
         <a href="{{ owner_panel_shop.get_regulatins_pdf }}"
-           class="alert-link" style="color:{{ colors.eshop_font_container }};"><p>Regulamin</p></a>
+           class="alert-link" style="color:{{ colors.eshop_font_nav_left }};"><p>Regulamin</p></a>
         <a href="{{ owner_panel_shop.get_privacy_policy_pdf }}"
-           class="alert-link" style="color:{{ colors.eshop_font_container }};"><p>Polityka Prywatności</p></a>
-        <a href="https://www.facebook.com/ridelectricKRK/"
-           class="alert-link" style="color:{{ colors.eshop_font_container }};"><p>Facebook: @ridelectricKRK</p></a>
+           class="alert-link" style="color:{{ colors.eshop_font_nav_left }};"><p>Polityka Prywatności</p></a>
+        <div class="row">
+            <strong><p class="ml-3" style="color:{{ colors.eshop_font_nav_left }};">Social Media:</p></strong>
+            <div class="ml-2 row">
+                {% if owner_panel_shop.social_media_link_linkedin != 'None' %}
+                <a href="{{ owner_panel_shop.social_media_link_linkedin }}" class="mx-1"
+                   style="color:{{ colors.eshop_font_nav_left }};" title="Linkedin">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                {% endif %}
+                {% if owner_panel_shop.social_media_link_instagram != 'None' %}
+                <a href="{{ owner_panel_shop.social_media_link_instagram }}" class="mx-1"
+                   style="color:{{ colors.eshop_font_nav_left }};" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                {% endif %}
+                {% if owner_panel_shop.social_media_link_facebook != 'None' %}
+                <a href="{{ owner_panel_shop.social_media_link_facebook }}" class="mx-1"
+                   style="color:{{ colors.eshop_font_nav_left }};" title="Facebook">
+                    <i class="fab fa-facebook-square" style="size: 7x;"></i>
+                </a>
+                {% endif %}
+                {% if owner_panel_shop.social_media_link_titter != 'None' %}
+                <a href="{{ owner_panel_shop.social_media_link_titter }}" class="mx-1"
+                   style="color:{{ colors.eshop_font_nav_left }};" title="Twitter">
+                    <i class="fab fa-twitter-square"></i>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+
     </div>
     <div class="alert col-12 col-md-5 mx-auto mb-n1"
-         style="background-color:{{ colors.eshop_container_products }}; color:{{ colors.eshop_font_container }};"
+         style="background-color:{{ colors.eshop_navbar_left }};"
          role="alert">
         <div class="row">
             <div class="col-6">
-                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_container }};">
+                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_nav_left }};">
                     <p class="text-center">Kontakt:</p>
                 </a>
-                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_container }};">
+                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_nav_left }};">
                     <h5 class="text-center">{{ owner_panel_shop.company_name }}</h5>
                 </a>
             </div>
-            <div class="col-6">
-                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_container }};">
+            <div class="col-6 ml-n4">
+                <a href="/kontakt" class="alert-link"  style="color:{{ colors.eshop_font_nav_left }};">
                     <p class="font-weight-normal my-1">
                         {{ owner_panel_shop.street }}
                         {{ owner_panel_shop.street_number }},
@@ -191,21 +221,22 @@
                         {{ owner_panel_shop.city }}
                     </p>
                 </a>
-                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_container }};">
+                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_nav_left }};">
                     <p class="font-weight-normal my-1">{{ owner_panel_shop.state }}</p>
                 </a>
-                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_container }};">
+                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_nav_left }};">
                     <p class="font-weight-normal my-1">{{ owner_panel_shop.email }}</p>
                 </a>
-                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_container }};">
+                <a href="/kontakt" class="alert-link" style="color:{{ colors.eshop_font_nav_left }};">
                     <p class="font-weight-normal my-1">{{ owner_panel_shop.phone_number }}</p>
                 </a>
             </div>
         </div>
     </div>
     <a class="navbar-brand ml-auto mt-2" href="https://chriss.pythonanywhere.com/">
-        <p class="ml-n3 small mb-n2" >Created by..</p>
-        <img class="image-logo" style="height: 2.5rem" src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
+        <p class="ml-n3 small mb-n1" style="color:{{ colors.eshop_font_nav }};">Created by..</p>
+        <img class="image-logo badge-pill badge-light" style="height: 2.5rem"
+             src="{% static 'img/logo Diddychriss.png' %}" alt="Logo">
     </a>
 </nav>
 <!-- Optional JavaScript -->
@@ -250,14 +281,11 @@
 		    return v.toString(16);
 		  });
 		}
-
-
 		let device = getCookie('device')
 
 		if (device == null || device == undefined){
 			device = uuidv4()
 		}
-
 		document.cookie ='device=' + device + ";domain=;path=/"
 	    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

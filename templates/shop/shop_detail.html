@@ -2,15 +2,17 @@
 {% load static %}
 
 {% block productshop %}
+<div class="container mx-auto col-11 col-md-9 col-lg-8 row alert shadow-lg mb-5 rounded"
+             style="background-color:{{ colors.eshop_container_products_elemnts }};" role="alert">
 <div class="card" >
     {% if messages %}
         {% for message in messages %}
             {% if 'info' in message.tags %}
-                <div class="alert alert-primary my-3 mx-3" role="alert">
+                <div class="alert alert-primary text-center my-3 mx-3" role="alert">
                     {{ message }}
                 </div>
             {% elif 'error' in message.tags %}
-                <div class="alert alert-danger my-3 mx-3" role="alert">
+                <div class="alert alert-danger text-center my-3 mx-3" role="alert">
                     {{ message }}
                 </div>
             {% endif %}
@@ -67,11 +69,17 @@
         <div class="my-3">
             {% if object.category.add_to_cart_button == False %}
             <a class="form-inline" href="/kontakt">
-                <button type="submit" class="btn btn-primary mx-auto" name="add_to_cart">Zapytaj o Produkt</button>
+                <button type="submit" class="btn btn-{{ colors.eshop_buttons_cont }}
+                            btn-outline-{{ colors.eshop_buttons_font_cont }} mx-auto" name="add_to_cart">
+                    Zapytaj o Produkt
+                </button>
             </a>
             {% else %}
             <form class="form-inline " action='.' method='POST'> {% csrf_token %}
-                <button type="submit" class="btn btn-primary mx-auto" name="add_to_cart">Dodaj do Koszyka</button>
+                <button type="submit" class="btn btn-{{ colors.eshop_buttons_cont }}
+                            btn-outline-{{ colors.eshop_buttons_font_cont }} mx-auto" name="add_to_cart">
+                    Dodaj do Koszyka
+                </button>
             </form>
             {% endif %}
         </div>
@@ -97,6 +105,7 @@
         </div>
     </div>
   </div>
+</div>
 </div>
 {% endblock %}
 
